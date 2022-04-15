@@ -6,23 +6,32 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 
 const Education = () => {
-	const institutionNameValue = useInput()
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
+	const educationContentInputs = useInput()
 
 	useEffect(() => {
-		dispatch(builderActions.addInstitution(institutionNameValue.inputValue))
-	}, [dispatch, institutionNameValue.inputValue]);
+		if(!educationContentInputs.inputValue) {
+			return
+		}
+		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
+	}, [dispatch, educationContentInputs.inputValue]);
+
 	return (
 		<StyledEducationSection>
 			<h2>Education</h2>
 			<form>
-				<h4>Company 1</h4>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>Institution</label>
+					<label>Institution</label>
 				</div>
 
 				<div>
-					<input type='text' onChange={institutionNameValue.onChange} value={institutionNameValue.inputValue}/>
+					<input
+						type='text'
+						name='institution'
+						onChange={educationContentInputs.onChange}
+						value={educationContentInputs.inputValue.name}
+						onBlur={educationContentInputs.onBlur}
+					/>
 				</div>
 
 				<div className='formControl-root'>
@@ -30,14 +39,24 @@ const Education = () => {
 				</div>
 
 				<div>
-					<input type='text' />
+					<input type='text'
+						name='address'
+						onChange={educationContentInputs.onChange}
+						value={educationContentInputs.inputValue.name}
+						onBlur={educationContentInputs.onBlur}
+					/>
 				</div>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>Major</label>
+					<label>Major</label>
 				</div>
 
 				<div>
-					<input type='text' />
+					<input type='text' 
+						name='major'
+						onChange={educationContentInputs.onChange}
+						value={educationContentInputs.inputValue.name}
+						onBlur={educationContentInputs.onBlur}
+					/>
 				</div>
 
 				<div className='formControl-root'>
@@ -45,14 +64,24 @@ const Education = () => {
 				</div>
 
 				<div>
-					<input type='text' />
+					<input type='text' 
+						name='graduationYear'
+						onChange={educationContentInputs.onChange}
+						value={educationContentInputs.inputValue.name}
+						onBlur={educationContentInputs.onBlur}
+					/>
 				</div>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>Additional Info</label>
+					<label>Additional Info</label>
 				</div>
 
 				<div>
-					<input type='text' />
+					<input type='text'
+						name='additionalInfo' 
+						onChange={educationContentInputs.onChange}
+						value={educationContentInputs.inputValue.name}
+						onBlur={educationContentInputs.onBlur}
+					/>
 				</div>
 
 				<Button>Add</Button>

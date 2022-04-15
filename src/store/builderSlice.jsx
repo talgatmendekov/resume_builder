@@ -26,13 +26,18 @@ const initState =JSON.parse(localStorage.getItem('@resumeData')) ||  {
             endDate2: '',
             firstDescription2: '',
 			secondDescription2: '',
-            
-
-        }
+        },
+		education: {
+			institution: '',
+			address: '',
+			major: '',
+			graduationYear: '',
+			additionalInfo: '',
+		},
 	},
 }
 const builderSlice = createSlice({
-	name: 'header',
+	name: 'builder',
 	initialState: initState,
 	reducers: {
 		addHeaderContent(state, action) {
@@ -40,7 +45,11 @@ const builderSlice = createSlice({
 		},
         addExperienceContent:(state, action) => {
             state.content.experience = action.payload
-        }
+        },
+		addEducationContent: (state, action) => {
+			console.log(action, 'dispacth');
+			state.content.education = action.payload
+		}
 	},
 })
 
