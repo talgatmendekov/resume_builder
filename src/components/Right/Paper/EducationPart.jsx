@@ -4,14 +4,20 @@ import styled from 'styled-components'
 
 
 const EducationPart = () => {
-  // const {institution} = useSelector(state=> state.builder.content.education)
+ const {institution, address, major, graduationYear, additionalInfo} = useSelector(state => state.builder.content.education)
   return (
     <StyledEducationPart>
       education
       <p>
-        <strong></strong>
+        <strong>{institution}</strong> {' '}
+          {address}
       </p>
-      <p></p>
+      <p>
+        {major} {graduationYear}
+      </p>
+      <ul>
+        <li>{additionalInfo}</li>
+      </ul>
     </StyledEducationPart>
   )
 }
