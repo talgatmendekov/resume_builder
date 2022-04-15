@@ -3,80 +3,64 @@ import Button from '../UI/Button'
 import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
-import { profActions } from '../../store/profSlice'
+import { builderActions } from '../../store/builderSlice'
 
 const Experience = () => {
 	const dispatch = useDispatch()
-	const companyInput = useInput();
-	const addressInput = useInput();
-	const positionInput = useInput();
-	const startDateInput = useInput();
-	const endDateInput = useInput();
-	const description1Input = useInput();
-	const description2Input = useInput();
-	
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
+	const experienceContentInputs = useInput()
 
 	useEffect(() => {
-		dispatch(profActions.addAdress1(addressInput.inputValue))
-	}, [dispatch, addressInput.inputValue]);
+		if (!experienceContentInputs.inputValue) {
+			return
+		}
+		dispatch(
+			builderActions.addExperienceContent(
+				experienceContentInputs.inputValue,
+			),
+		)
+	}, [dispatch, experienceContentInputs.inputValue])
 
-	useEffect(() => {
-		dispatch(profActions.addPosition1(positionInput.inputValue))
-	}, [dispatch, positionInput.inputValue]);
-
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
-
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
-
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
-
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
-
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
-
-	useEffect(() => {
-		dispatch(profActions.addCompany1(companyInput.inputValue))
-	}, [dispatch, companyInput.inputValue]);
-
-  return (
-    <StyledExperienceSection>
-        <h2>Professional Experience</h2>
-        <form>
-            <h4>Company 1</h4>
-            <div className='formControl-root'>
-					<label for='outlined-basic'>Company</label>
+	return (
+		<StyledExperienceSection>
+			<h2>Professional Experience</h2>
+			<form>
+				<h4>Company 1</h4>
+				<div className='formControl-root'>
+					<label>Company</label>
 				</div>
 
 				<div>
-					<input type='text' onChange={companyInput.onChange} value={companyInput.inputValue}/>
+					<input
+						name='company1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 
 				<div className='formControl-root'>
 					<label>City, State, Country</label>
 				</div>
-        
+
 				<div>
-					<input type='text' onChange={addressInput.onChange} value={addressInput.inputValue} />
+					<input
+						name='address1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>Position</label>
+					<label>Position</label>
 				</div>
 
 				<div>
-					<input type='text' onChange={positionInput.onChange} value={positionInput.inputValue}/>
+					<input
+						name='position1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 
 				<div className='formControl-root'>
@@ -84,14 +68,24 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input type='text' onChange={startDateInput.onChange} value={startDateInput.inputValue}/>
+					<input
+						name='startDate1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>End Date</label>
+					<label>End Date</label>
 				</div>
 
 				<div>
-					<input type='text' onChange={endDateInput.onChange} value={endDateInput.inputValue}/>
+					<input
+						name='endDate1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 
 				<div className='formControl-root'>
@@ -99,38 +93,63 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input type='text' onChange={description1Input.onChange} value={description1Input.inputValue} />
+					<input
+						name='firstDescription1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 				<div className='formControl-root'>
 					<label>Description</label>
 				</div>
 
 				<div>
-					<input type='text' onChange={description2Input.onChange} value={description2Input.inputValue}/>
+					<input
+						name='secondDescription1'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
-            <hr />
-            <h4>Company 2</h4>
-            <div className='formControl-root'>
-					<label for='outlined-basic'>Company</label>
+				<hr />
+				<h4>Company 2</h4>
+				<div className='formControl-root'>
+					<label>Company</label>
 				</div>
 
 				<div>
-					<input type='text'  value={companyInput.onChange}/>
+					<input
+						name='company2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 
 				<div className='formControl-root'>
 					<label>City, State, Country</label>
 				</div>
-        
+
 				<div>
-					<input type='text' />
+					<input
+						name='address2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>Position</label>
+					<label>Position</label>
 				</div>
 
 				<div>
-					<input type='text' />
+					<input
+						name='position2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 
 				<div className='formControl-root'>
@@ -138,14 +157,24 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input type='text' />
+					<input
+						name='startDate2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>End Date</label>
+					<label>End Date</label>
 				</div>
 
 				<div>
-					<input type='text' />
+					<input
+						name='endDate2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 
 				<div className='formControl-root'>
@@ -153,23 +182,33 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input type='text' />
+					<input
+						name='firstDescription2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
 				<div className='formControl-root'>
 					<label>Description</label>
 				</div>
 
 				<div>
-					<input type='text' />
+					<input
+						name='secondDescription2'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.name}
+					/>
 				</div>
-            <Button>Add</Button>
-        </form>
-    </StyledExperienceSection>
-  )
+				<Button>Add</Button>
+			</form>
+		</StyledExperienceSection>
+	)
 }
 
 const StyledExperienceSection = styled.div`
-  	form {
+	form {
 		display: flex;
 		flex-direction: column;
 		.formControl-root {

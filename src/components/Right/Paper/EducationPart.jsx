@@ -4,12 +4,12 @@ import styled from 'styled-components'
 
 
 const EducationPart = () => {
-  const {institution} = useSelector(state=> state.builder.content.education)
+  // const {institution} = useSelector(state=> state.builder.content.education)
   return (
     <StyledEducationPart>
       education
       <p>
-        <strong>{institution}</strong>
+        <strong></strong>
       </p>
       <p></p>
     </StyledEducationPart>
