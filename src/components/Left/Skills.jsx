@@ -1,63 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../UI/Button'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
+import { builderActions } from '../../store/builderSlice'
+import deleteIcon from '../../assets/close.png'
 
 const Skills = () => {
+	const dispatch = useDispatch()
+	const { skills } = useSelector((state) => state.builder.content)
+	const [skillValue, setSkillValue] = useState('')
+
+	const skillsInputChangeHandler = (e) => {
+		setSkillValue(e.target.value)
+	}
+
+	const addSkillHandler = (e) => {
+		e.preventDefault()
+		dispatch(
+			builderActions.addSkillsContent({
+				skillValue,
+				id: skillValue,
+			}),
+		)
+		setSkillValue('')
+	};
+
+	const deleteSkillButtonHandler = (id) => {
+            dispatch(builderActions.deleteSkillButton(id))
+	}
+	const skillOption = skills.map((skill) => (
+		<li key={skill.id}>
+			<span>{skill.skillValue}</span>
+			<img onClick={()=>deleteSkillButtonHandler(skill.id)} src={deleteIcon} alt='delete icon' />
+		</li>
+	))
 	return (
 		<StyledSkills>
-			<h2>Additional Skills</h2>
-			<form>
+			<h2>Skills</h2>
+			<form onSubmit={addSkillHandler}>
 				<div className='formControl-root'>
-					<label for='outlined-basic'>Full Name</label>
+					<label>Skills Section</label>
 				</div>
 
 				<div>
-					<input type='text' />
-				</div>
-
-				<div className='formControl-root'>
-					<label>Address</label>
-				</div>
-        
-				<div>
-					<input type='text' />
-				</div>
-				<div className='formControl-root'>
-					<label for='outlined-basic'>City</label>
-				</div>
-
-				<div>
-					<input type='text' />
-				</div>
-
-				<div className='formControl-root'>
-					<label>State</label>
-				</div>
-
-				<div>
-					<input type='text' />
-				</div>
-				<div className='formControl-root'>
-					<label for='outlined-basic'>Zip Code</label>
-				</div>
-
-				<div>
-					<input type='text' />
-				</div>
-
-				<div className='formControl-root'>
-					<label>Phone</label>
-				</div>
-
-				<div>
-					<input type='text' />
-				</div>
-				<div className='formControl-root'>
-					<label>Email</label>
-				</div>
-
-				<div>
-					<input type='text' />
+					<input
+						name='skill'
+						type='text'
+						onChange={skillsInputChangeHandler}
+						value={skillValue}
+					/>
+					<section>
+						<ul>{skillOption}</ul>
+					</section>
 				</div>
 
 				<Button>Add</Button>
@@ -85,6 +79,38 @@ const StyledSkills = styled.div`
 		input {
 			margin: 1rem;
 			padding: 1rem;
+		}
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			li {
+				display: flex;
+				margin: 0.5rem;
+				justify-content: space-between;
+				align-items: center;
+				width: 100px;
+				height: 30px;
+				color: rgb(243, 239, 239);
+				opacity: 1;
+				padding: 0.5rem;
+				font-size: 14px;
+				max-width: 100%;
+				font-weight: 500;
+				border-radius: 22px;
+				background-color: #FE615F;
+				word-break: break-all;
+				:hover{
+					img{
+						display: block;
+					}
+				}
+			}
+			img {
+				width: 1rem;
+				display: none;
+			
+			}
 		}
 	}
 `

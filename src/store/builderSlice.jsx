@@ -34,6 +34,7 @@ const initState =JSON.parse(localStorage.getItem('@resumeData')) ||  {
 			graduationYear: '',
 			additionalInfo: '',
 		},
+		skills: [],
 	},
 }
 const builderSlice = createSlice({
@@ -49,6 +50,17 @@ const builderSlice = createSlice({
 		addEducationContent: (state, action) => {
 			console.log(action, 'dispacth');
 			state.content.education = action.payload
+		},
+		addSkillsContent: (state, action) => {
+			console.log(action.payload, '=>>>skills');
+			const skillName = action.payload;
+			state.content.skills.push(skillName)
+		},
+		deleteSkillButton: (state, action) => {
+			const currentSkillId = action.payload
+			console.log(currentSkillId);
+			const deletedSkillButton = state.content.skills.filter(skill => skill.id !==currentSkillId)
+			state.content.skills = deletedSkillButton
 		}
 	},
 })
