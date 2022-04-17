@@ -4,10 +4,12 @@ import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
+import { useTranslation } from 'react-i18next'
 
 const Header = () => {
-	const dispatch = useDispatch()
-	const headerContentInputs = useInput()
+	const dispatch = useDispatch();
+	const headerContentInputs = useInput();
+	const { t } = useTranslation();
 	
 	useEffect(() => {
 		if(!headerContentInputs.inputValue){
@@ -20,10 +22,10 @@ const Header = () => {
 
 	return (
 		<StyledHeader>
-			<h2>Header</h2>
+			<h2>{t('left.header.title')}</h2>
 			<form>
 				<div className='formControl-root'>
-					<label>Full Name</label>
+					<label>{t('left.header.fullName')}</label>
 				</div>
 
 				<div>
@@ -37,7 +39,7 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Address</label>
+					<label>{t('left.header.address')}</label>
 				</div>
 
 				<div>
@@ -51,7 +53,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>City</label>
+					<label>{t('left.header.city')}</label>
 				</div>
 
 				<div>
@@ -66,7 +68,7 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>State</label>
+					<label>{t('left.header.state')}</label>
 				</div>
 
 				<div>
@@ -80,7 +82,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Zip Code</label>
+					<label>{t('left.header.zip')}</label>
 				</div>
 
 				<div>
@@ -95,7 +97,7 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Phone</label>
+					<label>{t('left.header.phone')}</label>
 				</div>
 
 				<div>
@@ -109,7 +111,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Email</label>
+					<label>{t('left.header.email')}</label>
 				</div>
 
 				<div>
@@ -122,7 +124,7 @@ const Header = () => {
 
 					/>
 				</div>
-				<Button>Add</Button>
+				<Button>{t('left.header.addBtn')}</Button>
 			</form>
 		</StyledHeader>
 	)

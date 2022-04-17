@@ -4,11 +4,14 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import deleteIcon from '../../assets/close.png'
+import { useTranslation } from 'react-i18next'
 
 const Skills = () => {
 	const dispatch = useDispatch()
 	const { skills } = useSelector((state) => state.builder.content)
 	const [skillValue, setSkillValue] = useState('')
+
+	const { t } = useTranslation();
 
 	const skillsInputChangeHandler = (e) => {
 		setSkillValue(e.target.value)
@@ -16,12 +19,15 @@ const Skills = () => {
 
 	const addSkillHandler = (e) => {
 		e.preventDefault()
-		dispatch(
-			builderActions.addSkillsContent({
-				skillValue,
-				id: skillValue,
-			}),
-		)
+		if(skillValue.trim().length > 0) {
+			dispatch(
+				builderActions.addSkillsContent({
+					skillValue,
+					id: skillValue,
+				}),
+			)
+		}
+	
 		setSkillValue('')
 	};
 
@@ -36,10 +42,10 @@ const Skills = () => {
 	))
 	return (
 		<StyledSkills>
-			<h2>Skills</h2>
+			<h2>{t('left.skills.title')}</h2>
 			<form onSubmit={addSkillHandler}>
 				<div className='formControl-root'>
-					<label>Skills Section</label>
+					<label>{t('left.skills.section')}</label>
 				</div>
 
 				<div>
@@ -54,7 +60,7 @@ const Skills = () => {
 					</section>
 				</div>
 
-				<Button>Add</Button>
+				<Button>{t('left.skills.addBtn')}</Button>
 			</form>
 		</StyledSkills>
 	)

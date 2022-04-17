@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
+import { useTranslation } from 'react-i18next'
 
 const Education = () => {
 	const dispatch = useDispatch()
@@ -16,12 +17,14 @@ const Education = () => {
 		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
 	}, [dispatch, educationContentInputs.inputValue]);
 
+	const { t } = useTranslation();
+
 	return (
 		<StyledEducationSection>
-			<h2>Education</h2>
+			<h2>{t('left.education.title')}</h2>
 			<form>
 				<div className='formControl-root'>
-					<label>Institution</label>
+					<label>{t('left.education.institution')}</label>
 				</div>
 
 				<div>
@@ -35,7 +38,7 @@ const Education = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>City, State, Country</label>
+					<label>{t('left.education.address')}</label>
 				</div>
 
 				<div>
@@ -47,7 +50,7 @@ const Education = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Major</label>
+					<label>{t('left.education.major')}</label>
 				</div>
 
 				<div>
@@ -60,7 +63,7 @@ const Education = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Graduation Year</label>
+					<label>{t('left.education.graduationYear')}</label>
 				</div>
 
 				<div>
@@ -72,7 +75,7 @@ const Education = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Additional Info</label>
+					<label>{t('left.education.additionalInfo')}</label>
 				</div>
 
 				<div>
@@ -84,7 +87,7 @@ const Education = () => {
 					/>
 				</div>
 
-				<Button>Add</Button>
+				<Button>{t('left.education.addBtn')}</Button>
 			</form>
 		</StyledEducationSection>
 	)

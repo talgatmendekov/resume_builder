@@ -4,8 +4,11 @@ import thumbn from '../assets/template.png'
 import Button from './UI/Button'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 const Template = () => {
+
+	const { t } = useTranslation()
 	return (
 		<StyledTemplate>
 			<div className='headerLeft'>
@@ -14,11 +17,11 @@ const Template = () => {
 				</Link>
 			</div>
 			<hr />
-			<h2>Templates</h2>
+			<h2>{t('template.title')}</h2>
 			<div className='cards'>
 				<div className='templateCard'>
 					<img src={thumbn} alt='thumbnail' />
-					<Link to={'/basic/header'}><Button>The Basic</Button></Link>
+					<Link to={'/basic/header'}><Button>{t('template.basic')}</Button></Link>
 					
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 import './App.css'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import Template from './components/Template'
 import Basic from './components/Left/Basic'
 import Right from './components/Right/Right'
@@ -13,6 +14,12 @@ import Education from './components/Left/Education'
 
 
 function App() {
+
+	const {i18n} = useTranslation();
+
+	useEffect(() => {
+		i18n.changeLanguage(localStorage.getItem('lang'))
+	}, [i18n])
 	
 	return (
 		<div className='app'>
