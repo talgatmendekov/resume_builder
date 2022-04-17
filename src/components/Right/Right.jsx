@@ -27,13 +27,18 @@ const Right = () => {
     }
   }
 
+
+  	const handleSaveToPDF = (e) => {
+		  e.preventDefault();
+		  window.print()
+	  }
 	return (
 		<div className='right'>
 			<StyledRight>
 				<Link to='#'>
 					<TiDelete title={t('right.deleteIconTitle')} className='deleteIcon' />
 				</Link>
-				<Link to='#'>
+				<Link to='#' onClick={handleSaveToPDF}>
 					<MdPictureAsPdf title={t('right.savePDFIconTitle')} className='pdfIcon' />
 				</Link>
 				<div className='navbar_lang'>
