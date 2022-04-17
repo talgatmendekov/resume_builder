@@ -3,10 +3,11 @@ import logo from '../../assets/logo.svg'
 import Button from '../UI/Button'
 import styled from 'styled-components'
 import { Link, Outlet } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Basic = () => {
 
-
+	const { t } = useTranslation()
 	return (
 		<StyledBasic>
 			<div className='headerLeft'>
@@ -16,23 +17,23 @@ const Basic = () => {
 					</Link>
 				</div>
 				<div>
-					<Button className='btn'>Example</Button>
+					<Button className='btn'>{t('left.basic.example')}</Button>
 				</div>
 			</div>
 			<div>
 				<div className='topLeft'>
 					<Link to={'header'}>
-						<Button className='nav'>Header</Button>
+						<Button className='nav'>{t('left.basic.header')}</Button>
 					</Link>
 					<Link to={'experience'}>
 						{' '}
-						<Button className='nav'>Experience</Button>
+						<Button className='nav'>{t('left.basic.experience')}</Button>
 					</Link>
 					<Link to={'education'}>
-						<Button className='nav'>Education</Button>
+						<Button className='nav'>{t('left.basic.education')}</Button>
 					</Link>
 					<Link to={'skills'}>
-						<Button className='nav'>Skills</Button>
+						<Button className='nav'>{t('left.basic.skills')}</Button>
 					</Link>
 				</div>
 			</div>

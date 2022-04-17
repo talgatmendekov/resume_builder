@@ -1,0 +1,72 @@
+{
+    "left": {
+        "basic": {
+            "example": "Example",
+            "header": "Header",
+            "experience": "Experience",
+            "education": "Eucation",
+            "skills": "Skills"
+        },
+
+        "header": {
+            "title": "Header",
+            "fullName": "Full Name",
+            "address": "Address",
+            "city": "City",
+            "state": "State",
+            "zip": "Zip Code",
+            "phone": "Phone",
+            "email": "Email",
+            "addBtn": "Add"
+        },
+
+        "education": {
+            "title": "Education",
+            "institution": "Institution",
+            "address": "City, State, Country",
+            "major": "Major",
+            "graduationYear": "Graduation Year",
+            "additionalIfno": "Additional Info",
+            "addBtn": "Add"
+        },
+        
+        "experience": {
+            "title": "Work experience",
+            "company1": {
+                "place": "Company 1",
+                "name": "Company",
+                "address": "City, State, Country",
+                "position": "Position",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "description": "Description"
+            },
+            "company2": {
+                "place": "Company 2",
+                "name": "Company",
+                "address": "City, State, Country",
+                "position": "Position",
+                "startDate": "Start Date",
+                "endDate": "End Date",
+                "description": "Description"
+            },
+            "addBtn": "Добавить"
+        },
+
+        "skills": {
+            "title": "Skills",
+            "section": "Skills Section",
+            "addBtn": "Add"
+        }
+    },
+
+    "right": {
+        "deleteIconTitle": "Delete All Data",
+        "savePDFIconTitle": "Save to PDF"
+    },
+
+    "template": {
+        "title": "Template",
+        "basic": "The basic"
+    }
+}

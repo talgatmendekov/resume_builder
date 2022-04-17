@@ -4,10 +4,11 @@ import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
+import { useTranslation } from 'react-i18next'
 
 const Experience = () => {
 	const dispatch = useDispatch()
-	const experienceContentInputs = useInput()
+	const experienceContentInputs = useInput();
 
 	useEffect(() => {
 		if (!experienceContentInputs.inputValue) {
@@ -20,13 +21,15 @@ const Experience = () => {
 		)
 	}, [dispatch, experienceContentInputs.inputValue])
 
+	const { t } = useTranslation();
+
 	return (
 		<StyledExperienceSection>
-			<h2>Professional Experience</h2>
+			<h2>{t('left.experience.title')}</h2>
 			<form>
-				<h4>Company 1</h4>
+				<h4>{t('left.experience.company1.place')}</h4>
 				<div className='formControl-root'>
-					<label>Company</label>
+					<label>{t('left.experience.company1.name')}</label>
 				</div>
 
 				<div>
@@ -39,7 +42,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>City, State, Country</label>
+					<label>{t('left.experience.company1.address')}</label>
 				</div>
 
 				<div>
@@ -51,7 +54,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Position</label>
+					<label>{t('left.experience.company1.position')}</label>
 				</div>
 
 				<div>
@@ -64,7 +67,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Start Date</label>
+					<label>{t('left.experience.company1.startDate')}</label>
 				</div>
 
 				<div>
@@ -76,7 +79,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>End Date</label>
+					<label>{t('left.experience.company1.endDate')}</label>
 				</div>
 
 				<div>
@@ -89,7 +92,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Description</label>
+					<label>{t('left.experience.company1.description')}</label>
 				</div>
 
 				<div>
@@ -101,7 +104,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Description</label>
+					<label>{t('left.experience.company1.description')}</label>
 				</div>
 
 				<div>
@@ -113,9 +116,9 @@ const Experience = () => {
 					/>
 				</div>
 				<hr />
-				<h4>Company 2</h4>
+				<h4>{t('left.experience.company2.place')}</h4>
 				<div className='formControl-root'>
-					<label>Company</label>
+					<label>{t('left.experience.company2.name')}</label>
 				</div>
 
 				<div>
@@ -128,7 +131,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>City, State, Country</label>
+					<label>{t('left.experience.company2.address')}</label>
 				</div>
 
 				<div>
@@ -140,7 +143,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Position</label>
+					<label>{t('left.experience.company2.position')}</label>
 				</div>
 
 				<div>
@@ -153,7 +156,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Start Date</label>
+					<label>{t('left.experience.company2.startDate')}</label>
 				</div>
 
 				<div>
@@ -165,7 +168,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>End Date</label>
+					<label>{t('left.experience.company2.endDate')}</label>
 				</div>
 
 				<div>
@@ -178,7 +181,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>Description</label>
+					<label>{t('left.experience.company2.description')}</label>
 				</div>
 
 				<div>
@@ -190,7 +193,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>Description</label>
+					<label>{t('left.experience.company2.description')}</label>
 				</div>
 
 				<div>
@@ -201,7 +204,7 @@ const Experience = () => {
 						value={experienceContentInputs.inputValue.name}
 					/>
 				</div>
-				<Button>Add</Button>
+				<Button>{t('left.experience.addBtn')}</Button>
 			</form>
 		</StyledExperienceSection>
 	)

@@ -1,0 +1,70 @@
+{
+    "left": {
+        "basic": {
+            "example": "Пример",
+            "header": "Заголовок",
+            "experience": "Опыт",  
+            "education": "Образование",
+            "skills": "Навыки"
+        },
+
+        "header": {
+            "title": "Заголовок",
+            "fullName": "ФИО",
+            "address": "Адрес",
+            "city": "Город",
+            "state": "Штат",
+            "zip": "Почтовый индекс",
+            "phone": "Тедефон",
+            "email": "Электронная почта",
+            "addBtn": "Добавить"
+        },
+        "education": {
+            "title": "Образование",
+            "institution": "Университет",
+            "address": "Город, Штат, Страна",
+            "major": "Специальность",
+            "graduationYear": "Год окончания ВУЗа",
+            "additionalInfo": "Дополнительная информация",
+            "addBtn": "Добавить"
+        },
+        
+        "experience": {
+            "title": "Опыт Работы",
+            "company1": {
+                "place": "Компания 1",
+                "name": "Компания",
+                "address": "Город, Штат, Страна",
+                "position": "Должность",
+                "startDate": "Дата начала",
+                "endDate": "Дата окончания",
+                "description": "Описание"
+            },
+            "company2": {
+                "place": "Компания 2",
+                "name": "Компания",
+                "address": "Город, Штат, Страна",
+                "position": "Должность",
+                "startDate": "Дата начала",
+                "endDate": "Дата окончания",
+                "description": "Описание"
+            }
+        },
+
+        "skills": {
+            "title": "Навыки",
+            "section": "Раздел навыков",
+            "addBtn": "Добавить"
+        }
+    },
+
+    "right": {
+        "deleteIconTitle": "Удалить данные",
+        "savePDFIconTitle": "Сохранить в PDF"
+    },
+
+    "template": {
+        "title": "Шаблон",
+        "basic": "Основа"
+    }
+}
