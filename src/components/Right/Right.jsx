@@ -19,7 +19,6 @@ const Right = () => {
 
   const { i18n, t } = useTranslation();
 
-//   const setToLocaleStorage = (key, value) => localStorage.setItem(key, value)
 
   const changeLangHandler = (e) => {
     if(e.target.value === 'en') {
@@ -71,9 +70,10 @@ const StyledRight = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	.deleteIcon {
-		font-size: 3rem;
+		font-size: 3.3rem;
 		color: #e91e63;
 		margin: 10px;
+	
 	}
 	.pdfIcon {
 		font-size: 3rem;

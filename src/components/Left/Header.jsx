@@ -5,19 +5,19 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-import { setToLocaleStorage } from '../../utils/helpers/general'
+
 
 const Header = () => {
-	const dispatch = useDispatch();
-	const headerContentInputs = useInput();
-	const { t } = useTranslation();
-	
+	const dispatch = useDispatch()
+	const headerContentInputs = useInput()
+	const { t } = useTranslation()
+
 	const submitHeaderContentHandler = (e) => {
 		e.preventDefault()
-		dispatch(builderActions.addHeaderContent(headerContentInputs.inputValue))
-		setToLocaleStorage('@resumeData', headerContentInputs.inputValue)
+		dispatch(
+			builderActions.addHeaderContent(headerContentInputs.inputValue),
+		)
 	}
-
 
 	return (
 		<StyledHeader>
@@ -33,7 +33,7 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 
@@ -47,8 +47,7 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 				<div className='formControl-root'>
@@ -61,8 +60,7 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 
@@ -76,8 +74,7 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 				<div className='formControl-root'>
@@ -90,8 +87,7 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 
@@ -105,8 +101,7 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 				<div className='formControl-root'>
@@ -119,18 +114,19 @@ const Header = () => {
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
+				<div className='formControl-root'>
+					<label>{t('left.header.summary')}</label>
+				</div>
 				<div>
-					<input
+					<textarea
 						name='summary'
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
-						onBlur = {headerContentInputs.onBlur}
-
+						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
 				<Button>{t('left.header.addBtn')}</Button>
@@ -147,10 +143,10 @@ const StyledHeader = styled.div`
 			position: relative;
 		}
 		label {
-			transform: translate(14px, -1px) scale(0.75);
+			transform: translate(10px,-8px) scale(0.75);
 			color: rgba(0, 0, 0, 0.54);
 			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1rem;
+			font-size: 1.2rem;
 			top: 0;
 			left: 0;
 			position: absolute;
@@ -158,7 +154,27 @@ const StyledHeader = styled.div`
 		input {
 			margin: 1rem;
 			padding: 1rem;
+			width: 70%;
+			color: gray;
+			background: #f8eded;
+			border: 0.5px solid #f0cece;
+			outline: none;
+			:hover {
+				border: 1px solid red;
+			}
+		}
+		textarea {
+			margin: 1rem;
+			padding: 1rem;
+			width: 70%;
+			color: gray;
+			background: #f8eded;
+			border: 0.5px solid #f0cece;
+			outline: none;
+			:hover {
+				border: 1px solid red;
+			}
 		}
 	}
 `
-export default Header;
+export default Header

@@ -5,10 +5,11 @@ import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { setToLocaleStorage } from '../../utils/helpers/general'
+
 
 const Experience = () => {
 	const dispatch = useDispatch()
+	
 	const experienceContentInputs = useInput()
 
 	const submitExperienceDataHandler = (e) => {
@@ -20,8 +21,11 @@ const Experience = () => {
 				),
 			)
 		}
-		setToLocaleStorage('@resumeData', experienceContentInputs.inputValue)
+		
+		// const {builder} = store.getState()
+		// setToLocaleStorage('@resumeData', builder)
 		experienceContentInputs.onClear()
+
 	}
 
 	const { t } = useTranslation()
@@ -147,10 +151,10 @@ const StyledExperienceSection = styled.div`
 			position: relative;
 		}
 		label {
-			transform: translate(14px, -1px) scale(0.75);
+			transform: translate(10px,-8px) scale(0.75);
 			color: rgba(0, 0, 0, 0.54);
 			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1rem;
+			font-size: 1.2rem;
 			top: 0;
 			left: 0;
 			position: absolute;
@@ -158,6 +162,14 @@ const StyledExperienceSection = styled.div`
 		input {
 			margin: 1rem;
 			padding: 1rem;
+			width: 70%;	
+			color: gray;
+			background: #f8eded;
+			border: 0.5px solid #f0cece;
+			outline: none;
+			:hover{
+				border: 1px solid red;
+			}
 		}
 	}
 `

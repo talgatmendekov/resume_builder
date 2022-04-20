@@ -86,7 +86,7 @@ const Basic = () => {
 const StyledBasic = styled.div`
 	background-color: #fff;
 	box-shadow: 0 0 0.5cm #7b7d7d;
-	width: 500px;
+	width: 450px;
 	.headerLeft {
 		display: flex;
 		justify-content: space-between;
@@ -104,7 +104,7 @@ const StyledBasic = styled.div`
 			color: white;
 			border: 0;
 			height: 30px;
-			font-size: 10px;
+			font-size: 1rem;
 			background: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
 			box-shadow: 0 3px 5px 2px #f2f3f4;
 			margin-top: 15px;
@@ -112,6 +112,7 @@ const StyledBasic = styled.div`
 			font-weight: 700;
 			margin-right: 20px;
 			border-radius: 3px;
+			
 		}
 	}
 	.topLeft {
@@ -119,9 +120,17 @@ const StyledBasic = styled.div`
 		padding: 1rem;
 		text-align: center;
 		justify-content: space-evenly;
-		/* .nav{
-			margin-right: 1rem;
-		} */
+		.nav{
+			font-size: 1.2rem;
+			font-weight: 500;
+			background: none;
+			color: #4d9ee9;
+			border: 0;
+			:hover{
+				background: #a4c2e4;
+			}
+			
+		}
 	}
 
 	hr {
