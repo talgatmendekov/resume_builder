@@ -5,7 +5,7 @@ import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel } from './styles'
 
 const Education = () => {
 	const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const Education = () => {
 			<h2>{t('left.education.title')}</h2>
 			<form onSubmit={submitEducationDataHandler}>
 				<div className='formControl-root'>
-					<label>{t('left.education.institution')}</label>
+					<StyledLabel>{t('left.education.institution')}</StyledLabel>
 				</div>
 
 				<div>
@@ -39,7 +39,7 @@ const Education = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.education.address')}</label>
+					<StyledLabel>{t('left.education.address')}</StyledLabel>
 				</div>
 
 				<div>
@@ -51,7 +51,7 @@ const Education = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.education.major')}</label>
+					<StyledLabel>{t('left.education.major')}</StyledLabel>
 				</div>
 
 				<div>
@@ -64,7 +64,7 @@ const Education = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.education.graduationYear')}</label>
+					<StyledLabel>{t('left.education.graduationYear')}</StyledLabel>
 				</div>
 
 				<div>
@@ -76,7 +76,7 @@ const Education = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.education.additionalIfno')}</label>
+					<StyledLabel>{t('left.education.additionalIfno')}</StyledLabel>
 				</div>
 
 				<div>
@@ -101,16 +101,7 @@ const StyledEducationSection = styled.div`
 		.formControl-root {
 			position: relative;
 		}
-		label {
-			transform: translate(10px,-8px) scale(0.75);
-			color: rgba(0, 0, 0, 0.54);
-			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1.2rem;
-			top: 0;
-			left: 0;
-			position: absolute;
-		}
-		
+	
 	}
 `
 export default Education

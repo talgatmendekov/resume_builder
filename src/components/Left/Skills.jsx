@@ -6,7 +6,7 @@ import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
-import { StyledInput, StyledAddButton } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel } from './styles'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
 	console.log(value)
@@ -80,7 +80,7 @@ const Skills = () => {
 			<h2>{t('left.skills.title')}</h2>
 			<form onSubmit={addSkillHandler}>
 				<div className='formControl-root'>
-					<label>{t('left.skills.section')}</label>
+					<StyledLabel>{t('left.skills.section')}</StyledLabel>
 				</div>
 
 				<div>
@@ -139,13 +139,7 @@ const StyledSkills = styled.div`
 		.formControl-root {
 			position: relative;
 		}
-		label {
-			transform: translate(10px, -8px) scale(0.75);
-			color: rgba(0, 0, 0, 0.54);
-			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1rem;
-			margin-bottom: 3px;
-		}
+		
 		
 		ul {
 			display: flex;

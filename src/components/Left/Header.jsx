@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel } from './styles'
 
 
 const Header = () => {
@@ -25,7 +25,7 @@ const Header = () => {
 			<h2>{t('left.header.title')}</h2>
 			<form onSubmit={submitHeaderContentHandler}>
 				<div className='formControl-root'>
-					<label>{t('left.header.fullName')}</label>
+					<StyledLabel>{t('left.header.fullName')}</StyledLabel>
 				</div>
 
 				<div>
@@ -39,7 +39,7 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.header.address')}</label>
+					<StyledLabel>{t('left.header.address')}</StyledLabel>
 				</div>
 
 				<div>
@@ -52,7 +52,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.city')}</label>
+					<StyledLabel>{t('left.header.city')}</StyledLabel>
 				</div>
 
 				<div>
@@ -66,7 +66,7 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.header.state')}</label>
+					<StyledLabel>{t('left.header.state')}</StyledLabel>
 				</div>
 
 				<div>
@@ -79,7 +79,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.zip')}</label>
+					<StyledLabel>{t('left.header.zip')}</StyledLabel>
 				</div>
 
 				<div>
@@ -93,7 +93,7 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.header.phone')}</label>
+					<StyledLabel>{t('left.header.phone')}</StyledLabel>
 				</div>
 
 				<div>
@@ -106,7 +106,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.email')}</label>
+					<StyledLabel>{t('left.header.email')}</StyledLabel>
 				</div>
 
 				<div>
@@ -143,15 +143,7 @@ const StyledHeader = styled.div`
 		.formControl-root {
 			position: relative;
 		}
-		label {
-			transform: translate(10px,-8px) scale(0.75);
-			color: rgba(0, 0, 0, 0.54);
-			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1.2rem;
-			top: 0;
-			left: 0;
-			position: absolute;
-		}
+	
 		textarea {
 			margin: 1rem;
 			padding: 1rem;

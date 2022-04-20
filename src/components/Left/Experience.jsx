@@ -151,15 +151,7 @@ const StyledExperienceSection = styled.div`
 		.formControl-root {
 			position: relative;
 		}
-		label {
-			transform: translate(10px,-8px) scale(0.75);
-			color: rgba(0, 0, 0, 0.54);
-			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1.2rem;
-			top: 0;
-			left: 0;
-			position: absolute;
-		}
+		
 		
 	}
 `

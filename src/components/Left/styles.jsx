@@ -13,22 +13,31 @@ export const StyledInput = styled.input`
 	}
 `
 export const StyledAddButton = styled.button`
-    font-size: 1.2rem;
-    border-radius: 3px;
-    width: 80%;
-    padding: 0.5 1rem;
-    background-color: beige;
-    border: none;
-    color: #5c5c85;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
-    transition: 0.25s;
-    :hover{
-        background-color: #5c5c85;
-        color: white;
-    }
-    :active{
-        box-shadow: 0 0 0;
-    }
+	font-size: 1.2rem;
+	border-radius: 3px;
+	width: 80%;
+	padding: 0.5 1rem;
+	background-color: beige;
+	border: none;
+	color: #5c5c85;
+	font-weight: bold;
+	text-transform: uppercase;
+	box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
+	transition: 0.25s;
+	:hover {
+		background-color: #5c5c85;
+		color: white;
+	}
+	:active {
+		box-shadow: 0 0 0;
+	}
+`
+export const StyledLabel = styled.label`
+	transform: translate(10px, -8px) scale(0.75);
+	color: rgba(0, 0, 0, 0.54);
+	font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+	font-size: 1.2rem;
+	top: 0;
+	left: 0;
+	position: absolute;
 `
