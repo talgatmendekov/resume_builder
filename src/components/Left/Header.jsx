@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
+import { StyledInput } from './styles'
 
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='fullName'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -42,7 +43,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='address'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -55,7 +56,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='city'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -69,7 +70,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='state'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -82,7 +83,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='zipCode'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -96,7 +97,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='phone'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -109,7 +110,7 @@ const Header = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='email'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -152,16 +153,7 @@ const StyledHeader = styled.div`
 			position: absolute;
 		}
 		input {
-			margin: 1rem;
-			padding: 1rem;
-			width: 70%;
-			color: gray;
-			background: #f8eded;
-			border: 0.5px solid #f0cece;
-			outline: none;
-			:hover {
-				border: 1px solid red;
-			}
+			
 		}
 		textarea {
 			margin: 1rem;
