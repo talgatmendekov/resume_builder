@@ -1,11 +1,10 @@
 import React from 'react'
-import Button from '../UI/Button'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -20,15 +19,15 @@ const Header = () => {
 	}
 
 	return (
-		<StyledHeader>
+		<>
 			<h2>{t('left.header.title')}</h2>
-			<form onSubmit={submitHeaderContentHandler}>
+			<StyledForm onSubmit={submitHeaderContentHandler}>
 				<div className='formControl-root'>
-					<label>{t('left.header.fullName')}</label>
+					<StyledLabel>{t('left.header.fullName')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='fullName'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -38,11 +37,11 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.header.address')}</label>
+					<StyledLabel>{t('left.header.address')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='address'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -51,11 +50,11 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.city')}</label>
+					<StyledLabel>{t('left.header.city')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='city'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -65,11 +64,11 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.header.state')}</label>
+					<StyledLabel>{t('left.header.state')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='state'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -78,11 +77,11 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.zip')}</label>
+					<StyledLabel>{t('left.header.zip')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='zipCode'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -92,11 +91,11 @@ const Header = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.header.phone')}</label>
+					<StyledLabel>{t('left.header.phone')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='phone'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -105,11 +104,11 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.email')}</label>
+					<StyledLabel>{t('left.header.email')}</StyledLabel>
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='email'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -118,10 +117,10 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.summary')}</label>
+					<StyledLabel>{t('left.header.summary')}</StyledLabel>
 				</div>
 				<div>
-					<textarea
+					<StyledTextArea
 						name='summary'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -129,52 +128,24 @@ const Header = () => {
 						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
-				<Button>{t('left.header.addBtn')}</Button>
-			</form>
-		</StyledHeader>
+				<StyledAddButton>{t('left.header.addBtn')}</StyledAddButton>
+			</StyledForm>
+		</>
 	)
 }
 
-const StyledHeader = styled.div`
-	form {
-		display: flex;
-		flex-direction: column;
-		.formControl-root {
-			position: relative;
-		}
-		label {
-			transform: translate(10px,-8px) scale(0.75);
-			color: rgba(0, 0, 0, 0.54);
-			font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-			font-size: 1.2rem;
-			top: 0;
-			left: 0;
-			position: absolute;
-		}
-		input {
-			margin: 1rem;
-			padding: 1rem;
-			width: 70%;
-			color: gray;
-			background: #f8eded;
-			border: 0.5px solid #f0cece;
-			outline: none;
-			:hover {
-				border: 1px solid red;
-			}
-		}
-		textarea {
-			margin: 1rem;
-			padding: 1rem;
-			width: 70%;
-			color: gray;
-			background: #f8eded;
-			border: 0.5px solid #f0cece;
-			outline: none;
-			:hover {
-				border: 1px solid red;
-			}
-		}
+const StyledTextArea = styled.textarea`
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	padding: 1rem;
+	width: 70%;
+	color: gray;
+	background: #f8eded;
+	border: 0.5px solid #f0cece;
+	outline: none;
+	:hover {
+		border: 1px solid red;
 	}
 `
+
 export default Header

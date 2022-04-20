@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 
+
 const Basic = () => {
 	const dispatch = useDispatch()
 	const { control } = useSelector((state) => state.builder)
@@ -39,7 +40,7 @@ const Basic = () => {
 	}
 	return (
 		<>
-		<StyledBasic>
+		<StyledBasic className='left'>
 			<div className='headerLeft'>
 				<div>
 					<Link to='/'>
