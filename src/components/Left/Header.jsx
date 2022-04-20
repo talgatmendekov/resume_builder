@@ -1,12 +1,10 @@
 import React from 'react'
-import Button from '../UI/Button'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel } from './styles'
-
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
 
 const Header = () => {
 	const dispatch = useDispatch()
@@ -21,9 +19,9 @@ const Header = () => {
 	}
 
 	return (
-		<StyledHeader>
+		<>
 			<h2>{t('left.header.title')}</h2>
-			<form onSubmit={submitHeaderContentHandler}>
+			<StyledForm onSubmit={submitHeaderContentHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.header.fullName')}</StyledLabel>
 				</div>
@@ -122,7 +120,7 @@ const Header = () => {
 					<label>{t('left.header.summary')}</label>
 				</div>
 				<div>
-					<textarea
+					<StyledTextArea
 						name='summary'
 						type='text'
 						onChange={headerContentInputs.onChange}
@@ -131,31 +129,22 @@ const Header = () => {
 					/>
 				</div>
 				<StyledAddButton>{t('left.header.addBtn')}</StyledAddButton>
-			</form>
-		</StyledHeader>
+			</StyledForm>
+		</>
 	)
 }
 
-const StyledHeader = styled.div`
-	form {
-		display: flex;
-		flex-direction: column;
-		.formControl-root {
-			position: relative;
-		}
-	
-		textarea {
-			margin: 1rem;
-			padding: 1rem;
-			width: 70%;
-			color: gray;
-			background: #f8eded;
-			border: 0.5px solid #f0cece;
-			outline: none;
-			:hover {
-				border: 1px solid red;
-			}
-		}
+const StyledTextArea = styled.textarea`
+	margin: 1rem;
+	padding: 1rem;
+	width: 70%;
+	color: gray;
+	background: #f8eded;
+	border: 0.5px solid #f0cece;
+	outline: none;
+	:hover {
+		border: 1px solid red;
 	}
 `
+
 export default Header

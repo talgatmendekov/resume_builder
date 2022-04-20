@@ -1,11 +1,9 @@
 import React from 'react'
-import Button from '../UI/Button'
-import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
 
 
 const Experience = () => {
@@ -23,8 +21,6 @@ const Experience = () => {
 			)
 		}
 		
-		// const {builder} = store.getState()
-		// setToLocaleStorage('@resumeData', builder)
 		experienceContentInputs.onClear()
 
 	}
@@ -32,12 +28,12 @@ const Experience = () => {
 	const { t } = useTranslation()
 
 	return (
-		<StyledExperienceSection>
+		<>
 			<h2>{t('left.experience.title')}</h2>
-			<form onSubmit={submitExperienceDataHandler}>
-				<h4>{t('left.experience.company1.place')}</h4>
+			<StyledForm onSubmit={submitExperienceDataHandler}>
+				
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.name')}</label>
+					<StyledLabel>{t('left.experience.company1.name')}</StyledLabel>
 				</div>
 
 				<div>
@@ -50,7 +46,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.address')}</label>
+					<StyledLabel>{t('left.experience.company1.address')}</StyledLabel>
 				</div>
 
 				<div>
@@ -62,7 +58,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.position')}</label>
+					<StyledLabel>{t('left.experience.company1.position')}</StyledLabel>
 				</div>
 
 				<div>
@@ -75,7 +71,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.startDate')}</label>
+					<StyledLabel>{t('left.experience.company1.startDate')}</StyledLabel>
 				</div>
 
 				<div>
@@ -87,7 +83,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.endDate')}</label>
+					<StyledLabel>{t('left.experience.company1.endDate')}</StyledLabel>
 				</div>
 
 				<div>
@@ -100,7 +96,7 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.description')}</label>
+					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
 				</div>
 
 				<div>
@@ -112,7 +108,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.description')}</label>
+					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
 				</div>
 
 				<div>
@@ -124,7 +120,7 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.experience.company1.description')}</label>
+					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
 				</div>
 
 				<div>
@@ -139,20 +135,10 @@ const Experience = () => {
 				<hr />
 
 				<StyledAddButton>{t('left.experience.addBtn')}</StyledAddButton>
-			</form>
-		</StyledExperienceSection>
+			</StyledForm>
+		</>
 	)
 }
 
-const StyledExperienceSection = styled.div`
-	form {
-		display: flex;
-		flex-direction: column;
-		.formControl-root {
-			position: relative;
-		}
-		
-		
-	}
-`
+
 export default Experience

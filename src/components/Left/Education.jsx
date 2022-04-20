@@ -1,11 +1,9 @@
 import React from 'react'
-import Button from '../UI/Button'
-import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
 
 const Education = () => {
 	const dispatch = useDispatch()
@@ -21,9 +19,9 @@ const Education = () => {
 	}
 
 	return (
-		<StyledEducationSection>
+		<>
 			<h2>{t('left.education.title')}</h2>
-			<form onSubmit={submitEducationDataHandler}>
+			<StyledForm onSubmit={submitEducationDataHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.education.institution')}</StyledLabel>
 				</div>
@@ -89,19 +87,10 @@ const Education = () => {
 				</div>
 
 				<StyledAddButton>{t('left.education.addBtn')}</StyledAddButton>
-			</form>
-		</StyledEducationSection>
+			</StyledForm>
+		</>
 	)
 }
 
-const StyledEducationSection = styled.div`
-	form {
-		display: flex;
-		flex-direction: column;
-		.formControl-root {
-			position: relative;
-		}
-	
-	}
-`
+
 export default Education

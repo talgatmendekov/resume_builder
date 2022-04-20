@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import Button from '../UI/Button'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
-import { StyledInput, StyledAddButton, StyledLabel } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm, StyledSkills} from './styles'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
-	console.log(value)
-	console.log(showSelect)
+	
 	const valueToLower = value.toLowerCase()
 	return (
 		value.trim() !== '' &&
@@ -78,7 +76,7 @@ const Skills = () => {
 	return (
 		<StyledSkills>
 			<h2>{t('left.skills.title')}</h2>
-			<form onSubmit={addSkillHandler}>
+			<StyledForm onSubmit={addSkillHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.skills.section')}</StyledLabel>
 				</div>
@@ -101,7 +99,7 @@ const Skills = () => {
 					</section>
 				</div>
 				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
-			</form>
+			</StyledForm>
 		</StyledSkills>
 	)
 }
@@ -132,46 +130,5 @@ const SkillsItem = styled.div`
 	}
 `
 
-const StyledSkills = styled.div`
-	form {
-		display: flex;
-		flex-direction: column;
-		.formControl-root {
-			position: relative;
-		}
-		
-		
-		ul {
-			display: flex;
-			flex-wrap: wrap;
-			list-style: none;
-			gap: 5px;
-			width: 100%;
-			padding: 0;
-			li {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				gap: 6px;
-				height: 30px;
-				color: rgb(243, 239, 239);
-				opacity: 1;
-				padding: 0.5rem 1rem;
-				font-size: 14px;
-				max-width: 100%;
-				font-weight: 500;
-				border-radius: 22px;
-				background-color: #fe615f;
-				word-break: break-all;
-				:hover .deleteIcon {
-					opacity: 1;
-				}
-			}
-			.deleteIcon {
-				opacity: 0;
-			}
-		}
-		
-	}
-`
+
 export default Skills
