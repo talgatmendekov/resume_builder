@@ -8,6 +8,7 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 const HeaderPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
 
+	console.log(content, control)
 	const { i18n } = useTranslation()
 
 	let contentUse = content
@@ -17,12 +18,12 @@ const HeaderPart = () => {
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
 	}
-	
-	let divider;
+
+	let divider
 	if (Object.keys(contentUse.header).length > 0) {
-	  divider = <hr/>;
+		divider = <hr />
 	} else {
-	  divider = "";
+		divider = ''
 	}
 	return (
 		<StyledHeaderPart>

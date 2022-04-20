@@ -29,11 +29,11 @@ const SkillsPart = () => {
 		)
 	}
 
-	let bulletsData = contentUse.skills.map((skill, index) => {
+	let bulletsData = contentUse.skills.map((skill) => {
 		if (skill === '') {
 			return ''
 		} else {
-			return <li key={index}>{skill.skillValue}</li>
+			return <li key={skill.id}>{skill.skillValue}</li>
 		}
 	})
 	return (

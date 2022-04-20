@@ -4,11 +4,11 @@
 {
     "left": {
         "basic": {
-            "addExample": "Example",
-            "removeExample": "Remove Example",
+            "addExample": "Show Example",
+            "removeExample": "Hide Example",
             "header": "Header",
             "experience": "Experience",
-            "education": "Eucation",
+            "education": "Education",
             "skills": "Skills"
         },
 
