@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/logo.webp'
+import logo from '../assets/logo.svg'
 import thumbn from '../assets/template.png'
 import Button from './UI/Button'
 import { Link } from 'react-router-dom'

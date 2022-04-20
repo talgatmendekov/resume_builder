@@ -1,28 +1,32 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '../UI/Button'
 import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
+import { setToLocaleStorage } from '../../utils/helpers/general'
 
 const Education = () => {
 	const dispatch = useDispatch()
 	const educationContentInputs = useInput()
 
-	useEffect(() => {
-		if(!educationContentInputs.inputValue) {
-			return
-		}
-		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
-	}, [dispatch, educationContentInputs.inputValue]);
-
 	const { t } = useTranslation();
+
+	const submitEducationDataHandler = (e) => {
+		e.preventDefault()
+		// if(!educationContentInputs.inputValue){
+		// 	return
+		// }
+		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
+		setToLocaleStorage('@resumeData', educationContentInputs.inputValue)
+		educationContentInputs.onClear()
+	}
 
 	return (
 		<StyledEducationSection>
 			<h2>{t('left.education.title')}</h2>
-			<form>
+			<form onSubmit={submitEducationDataHandler}>
 				<div className='formControl-root'>
 					<label>{t('left.education.institution')}</label>
 				</div>
@@ -32,7 +36,7 @@ const Education = () => {
 						type='text'
 						name='institution'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.name}
+						value={educationContentInputs.inputValue.institution}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -45,7 +49,7 @@ const Education = () => {
 					<input type='text'
 						name='address'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.name}
+						value={educationContentInputs.inputValue.address}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -57,7 +61,7 @@ const Education = () => {
 					<input type='text' 
 						name='major'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.name}
+						value={educationContentInputs.inputValue.major}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -70,19 +74,19 @@ const Education = () => {
 					<input type='text' 
 						name='graduationYear'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.name}
+						value={educationContentInputs.inputValue.graduationYear}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.education.additionalInfo')}</label>
+					<label>{t('left.education.additionalIfno')}</label>
 				</div>
 
 				<div>
 					<input type='text'
 						name='additionalInfo' 
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.name}
+						value={educationContentInputs.inputValue.additionalInfo}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>

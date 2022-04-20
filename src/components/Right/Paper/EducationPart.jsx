@@ -1,30 +1,69 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-
+import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const EducationPart = () => {
- const {institution, address, major, graduationYear, additionalInfo} = useSelector(state => state.builder.content.education)
-  return (
-    <StyledEducationPart>
-      education
-      <p>
-        <strong>{institution}</strong> {' '}
-          {address}
-      </p>
-      <p>
-        {major} {graduationYear}
-      </p>
-      <ul>
-        <li>{additionalInfo}</li>
-      </ul>
-    </StyledEducationPart>
-  )
+	const { content, control } = useSelector((state) => state.builder)
+
+	const { t, i18n } = useTranslation()
+
+	let contentUse = null
+
+	if (control && i18n.resolvedLanguage === 'ru') {
+		contentUse = templatedataRu
+	} else if (control && i18n.resolvedLanguage === 'en') {
+		contentUse = templatedata
+	}else{
+		contentUse = content
+	}
+
+	
+	let educationContent = contentUse.education.map((education, index) => {
+		return (
+			<div key={index}>
+				<p>
+					<strong>{education.institution}</strong>{' '}
+					{education.address}
+				</p>
+				<p>
+					{education.major} {education.graduationYear}
+				</p>
+				<ul>
+					<li>{education.additionalInfo}</li>
+				</ul>
+			</div>
+		)
+	})
+
+	let title
+	if (contentUse.education.length === 0) {
+		title = ''
+	} else {
+		title = (
+			<h3>
+				<strong>{t('left.education.title')}</strong>
+			</h3>
+		)
+	}
+	return (
+		<StyledEducationPart>
+			{title}
+			{educationContent}
+		</StyledEducationPart>
+	)
 }
 
 const StyledEducationPart = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 94px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 94px;
+	h3{
+		strong{
+			text-transform: uppercase;
+		}
+	}
 `
 export default EducationPart

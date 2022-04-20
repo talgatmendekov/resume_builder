@@ -1,14 +1,44 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import logo from '../../assets/logo.svg'
 import Button from '../UI/Button'
 import styled from 'styled-components'
 import { Link, Outlet } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { builderActions } from '../../store/builderSlice'
 
 const Basic = () => {
+	const dispatch = useDispatch()
+	const { control } = useSelector((state) => state.builder)
 
 	const { t } = useTranslation()
+
+	const addExampleHandler = () => {
+			dispatch(builderActions.addExample())
+		
+	}
+
+	const clearExampleHandler = () => {
+		dispatch(builderActions.clearExample())
+	}
+
+	let expData
+	if (control) {
+		expData = (
+			<Button className='btn' onClick={clearExampleHandler}>
+				{t('left.basic.removeExample')}
+			</Button>
+		)
+	} else {
+		expData = (
+			<Button className='btn' onClick={addExampleHandler}>
+				{t('left.basic.addExample')}
+			</Button>
+		)
+	}
 	return (
+		<>
 		<StyledBasic>
 			<div className='headerLeft'>
 				<div>
@@ -16,24 +46,30 @@ const Basic = () => {
 						<img src={logo} alt='logo' />
 					</Link>
 				</div>
-				<div>
-					<Button className='btn'>{t('left.basic.example')}</Button>
-				</div>
+				<div>{expData}</div>
 			</div>
 			<div>
 				<div className='topLeft'>
 					<Link to={'header'}>
-						<Button className='nav'>{t('left.basic.header')}</Button>
+						<Button className='nav'>
+							{t('left.basic.header')}
+						</Button>
 					</Link>
 					<Link to={'experience'}>
 						{' '}
-						<Button className='nav'>{t('left.basic.experience')}</Button>
+						<Button className='nav'>
+							{t('left.basic.experience')}
+						</Button>
 					</Link>
 					<Link to={'education'}>
-						<Button className='nav'>{t('left.basic.education')}</Button>
+						<Button className='nav'>
+							{t('left.basic.education')}
+						</Button>
 					</Link>
 					<Link to={'skills'}>
-						<Button className='nav'>{t('left.basic.skills')}</Button>
+						<Button className='nav'>
+							{t('left.basic.skills')}
+						</Button>
 					</Link>
 				</div>
 			</div>
@@ -42,15 +78,22 @@ const Basic = () => {
 				<Outlet />
 			</div>
 		</StyledBasic>
+		</>
+		
 	)
 }
 
 const StyledBasic = styled.div`
 	background-color: #fff;
 	box-shadow: 0 0 0.5cm #7b7d7d;
+	width: 500px;
 	.headerLeft {
 		display: flex;
 		justify-content: space-between;
+		div{
+			margin-top: 1rem;
+		}
+
 		div {
 			flex-grow: 2;
 			img {
@@ -76,6 +119,9 @@ const StyledBasic = styled.div`
 		padding: 1rem;
 		text-align: center;
 		justify-content: space-evenly;
+		/* .nav{
+			margin-right: 1rem;
+		} */
 	}
 
 	hr {

@@ -1,39 +1,42 @@
 import { useState } from 'react'
 
 export const useInput = () => {
-	const [inputValue, setInputValue] = useState('')
+	const [inputValue, setInputValue] = useState({})
 	const [name, setName] = useState('')
 	const [inputTouched, setInputTouched] = useState(false)
-     
 
 	let valueIsValid = null
 	let valueIsInValid = null
-        if(name && inputValue[name].trim().length > 0){
-            valueIsValid = true;
-        }else{
-            valueIsValid = false
-        };
+	if (name && inputValue[name].trim().length > 0) {
+		valueIsValid = true
+	} else {
+		valueIsValid = false
+	}
 
-        if(!valueIsValid && inputTouched){
-            valueIsInValid = true ;
-        }else{
-            valueIsInValid = false
-        };
-       
-       
+	if (!valueIsValid && inputTouched) {
+		valueIsInValid = true
+	} else {
+		valueIsInValid = false
+	}
 
 	return {
-        name,
+		name,
 		inputValue,
 		valueIsInValid,
 		valueIsValid,
-		onChange: (e) =>{
+		onChange: (e) => {
 			setInputValue({ ...inputValue, [e.target.name]: e.target.value })
-            setName(e.target.name)
-        },
+			setName(e.target.name)
+		},
 		onBlur: () => setInputTouched(true),
 		onClear: () => {
-			setInputValue('')
+			let clearedValues = {}
+			for (let key in inputValue) {
+				clearedValues[key] = ''
+			}
+
+			setInputValue(clearedValues)
+
 			setInputTouched(false)
 		},
 	}

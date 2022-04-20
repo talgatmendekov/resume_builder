@@ -1,7 +1,11 @@
+
+
+
 {
     "left": {
         "basic": {
-            "example": "Example",
+            "addExample": "Example",
+            "removeExample": "Remove Example",
             "header": "Header",
             "experience": "Experience",
             "education": "Eucation",
@@ -17,6 +21,7 @@
             "zip": "Zip Code",
             "phone": "Phone",
             "email": "Email",
+            "summary": "Summary",
             "addBtn": "Add"
         },
 
@@ -31,7 +36,7 @@
         },
         
         "experience": {
-            "title": "Work experience",
+            "title": "Professional experience",
             "company1": {
                 "place": "Company 1",
                 "name": "Company",

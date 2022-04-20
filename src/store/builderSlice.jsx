@@ -10,57 +10,54 @@ const initState =JSON.parse(localStorage.getItem('@resumeData')) ||  {
 			zipCode: '',
 			phone: '',
 			email: '',
+			summary: '',
 		},
-		experience: {
-            company1: '',
-            address1: '',
-            position1: '',
-            startDate1: '',
-            endDate1: '',
-            firstDescription1: '',
-			secondDescription1: '',
-            company2: '',
-            address2: '',
-            position2: '',
-            startDate2: '',
-            endDate2: '',
-            firstDescription2: '',
-			secondDescription2: '',
-        },
-		education: {
-			institution: '',
-			address: '',
-			major: '',
-			graduationYear: '',
-			additionalInfo: '',
-		},
+		experience: [],
+		education: [],
 		skills: [],
 	},
+	
+	control: false,
 }
 const builderSlice = createSlice({
 	name: 'builder',
 	initialState: initState,
 	reducers: {
+
 		addHeaderContent(state, action) {
+			
 			state.content.header = action.payload
 		},
         addExperienceContent:(state, action) => {
-            state.content.experience = action.payload
+			const experienceContent = action.payload
+            state.content.experience.push(experienceContent)
+			
         },
 		addEducationContent: (state, action) => {
-			console.log(action, 'dispacth');
-			state.content.education = action.payload
+			const educationContent = action.payload
+			state.content.education.push(educationContent)
+			
 		},
 		addSkillsContent: (state, action) => {
-			console.log(action.payload, '=>>>skills');
 			const skillName = action.payload;
 			state.content.skills.push(skillName)
 		},
 		deleteSkillButton: (state, action) => {
 			const currentSkillId = action.payload
-			console.log(currentSkillId);
 			const deletedSkillButton = state.content.skills.filter(skill => skill.id !==currentSkillId)
 			state.content.skills = deletedSkillButton
+		},
+		addExample: (state) => {
+			state.control = true;
+		},
+		clearExample: (state) => {
+			state.control = false;
+		},
+		deleteContent: (state) => {
+			state.content.header = {};
+			state.content.experience = [];
+			state.content.education = [];
+			state.content.skills= [];
 		}
 	},
 })
