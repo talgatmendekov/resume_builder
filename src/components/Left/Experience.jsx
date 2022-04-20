@@ -5,6 +5,7 @@ import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
+import { StyledInput } from './styles'
 
 
 const Experience = () => {
@@ -40,7 +41,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='company'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -53,7 +54,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='address'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -65,7 +66,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='position'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -78,7 +79,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='startDate'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -90,7 +91,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='endDate'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -103,7 +104,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='description1'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -115,7 +116,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='description2'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -127,7 +128,7 @@ const Experience = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='description3'
 						type='text'
 						onChange={experienceContentInputs.onChange}
@@ -159,18 +160,7 @@ const StyledExperienceSection = styled.div`
 			left: 0;
 			position: absolute;
 		}
-		input {
-			margin: 1rem;
-			padding: 1rem;
-			width: 70%;	
-			color: gray;
-			background: #f8eded;
-			border: 0.5px solid #f0cece;
-			outline: none;
-			:hover{
-				border: 1px solid red;
-			}
-		}
+		
 	}
 `
 export default Experience
