@@ -6,6 +6,7 @@ import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
+import { StyledInput } from './styles'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
 	console.log(value)
@@ -83,7 +84,7 @@ const Skills = () => {
 				</div>
 
 				<div>
-					<input
+					<StyledInput
 						name='skill'
 						type='text'
 						onChange={skillsInputChangeHandler}
@@ -145,18 +146,7 @@ const StyledSkills = styled.div`
 			font-size: 1rem;
 			margin-bottom: 3px;
 		}
-		input {
-			padding: 1rem;
-			padding: 1rem;
-			width: 70%;
-			color: gray;
-			background: #f8eded;
-			border: 0.5px solid #f0cece;
-			outline: none;
-			:hover {
-				border: 1px solid red;
-			}
-		}
+		
 		ul {
 			display: flex;
 			flex-wrap: wrap;
