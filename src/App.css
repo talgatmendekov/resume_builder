@@ -6,12 +6,16 @@ body {
 }
 
 .app {
+  width: 1400px;
+  margin: 0 auto;
   display: flex;
   min-height: 100vh;
 }
 
 .left {
-
+  background-color: #fff;
+  width: 25vw;
+  box-shadow: 0 0 0.5cm #7b7d7d;
 }
 
 .right {
@@ -52,7 +56,7 @@ body {
   }
 }
 
-/* Smartphones (portrait and landscape) -----------
+/* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .app {
     display: flex;
@@ -69,4 +73,12 @@ body {
   .right {
     height: 10vh;
     font-family: "Lora", serif;
-  } */
+  }
+  .right .page {
+ 
+    width: 120vw;
+    height: 100%;
+    padding: 1rem;
+    
+  }
+}

@@ -117,7 +117,7 @@ const Header = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<label>{t('left.header.summary')}</label>
+					<StyledLabel>{t('left.header.summary')}</StyledLabel>
 				</div>
 				<div>
 					<StyledTextArea
@@ -135,7 +135,8 @@ const Header = () => {
 }
 
 const StyledTextArea = styled.textarea`
-	margin: 1rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
 	padding: 1rem;
 	width: 70%;
 	color: gray;

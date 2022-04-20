@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const StyledInput = styled.input`
-	margin: 1rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
 	padding: 1rem;
 	width: 70%;
 	color: gray;
@@ -14,10 +15,10 @@ export const StyledInput = styled.input`
 `
 export const StyledAddButton = styled.button`
 	font-size: 1.2rem;
-	border-radius: 3px;
-	width: 80%;
-	padding: 0.5 1rem;
-	background-color: beige;
+	border-radius: 5px;
+	width: 78%;
+	padding: 0.3rem;
+	background-color: #58add4;
 	border: none;
 	color: #5c5c85;
 	font-weight: bold;

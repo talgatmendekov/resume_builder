@@ -40,7 +40,7 @@ const Basic = () => {
 	}
 	return (
 		<>
-		<StyledBasic>
+		<StyledBasic className='left'>
 			<div className='headerLeft'>
 				<div>
 					<Link to='/'>
