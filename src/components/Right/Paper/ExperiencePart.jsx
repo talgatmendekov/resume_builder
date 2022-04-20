@@ -1,50 +1,77 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const ExperiencePart = () => {
-  const {company1, address1, position1, startDate1, 
-    endDate1, firstDescription1, secondDescription1} = useSelector(state => state.builder.content.experience);
+	const { content, control } = useSelector((state) => state.builder)
 
-  const {company2, address2, position2, startDate2, 
-    endDate2, firstDescription2, secondDescription2} = useSelector(state => state.builder.content.experience);
-  
-  return (
-    <StyledExperiencePart>
-      Experience
-      <div>
-        <p>
-          <strong>{company1}</strong> {' '}
-          {address1}
-        </p>
-        <p>
-          {position1} {startDate1} {' '}
-          {endDate1}
-        </p>
-        <ul>
-          <li>{firstDescription1}</li>
-          <li>{secondDescription1}</li>
-        </ul>
-        <p>
-          <strong>{company2}</strong> {' '}
-          {address2}
-        </p>
-        <p>
-          {position2} {startDate2} {' '}
-          {endDate2}
-        </p>
-        <ul>
-          <li>{firstDescription2}</li>
-          <li>{secondDescription2}</li>
-        </ul>
-      </div>
-    </StyledExperiencePart>
-  )
+	//if the 'control' is TRUE - use 'Fake state' to show the preview of the template
+
+	const { t, i18n } = useTranslation()
+
+	let contentUse = null
+
+	if (control && i18n.resolvedLanguage === 'ru') {
+		contentUse = templatedataRu
+	} else if (control && i18n.resolvedLanguage === 'en') {
+		contentUse = templatedata
+	}else{
+		contentUse = content
+	}
+
+	console.log(templatedata);
+	let experienceContent = contentUse.experience.map((experience, index) => {
+		return (
+			<div key={index}>
+				<p>
+					<strong>{experience.company}</strong>{' '}
+					{experience.address}
+				</p>
+				<p>
+					{experience.position} {experience.startDate}{' '}
+					{experience.endDate}
+				</p>
+				<ul>
+					<li>{experience.description1}</li>
+					<li>{experience.description2}</li>
+					<li>{experience.description3}</li>
+				</ul>
+			</div>
+		)
+	})
+
+
+	//   If there is no data, the Title of the section will not be displayed
+	let title
+	if (contentUse.experience.length === 0) {
+		title = ''
+	} else {
+		title = (
+			<h3>
+				<strong>{t('left.experience.title')}</strong>
+			</h3>
+		)
+	}
+
+	return (
+		<StyledExperiencePart>
+			{title}
+			{experienceContent}
+		</StyledExperiencePart>
+	)
 }
 
 const StyledExperiencePart = styled.div`
-  display: flex;
-  flex-direction:column;
-  margin-left: 94px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 94px;
+	h3{
+		strong{
+			text-transform: uppercase;
+		}
+	}
 `
 export default ExperiencePart

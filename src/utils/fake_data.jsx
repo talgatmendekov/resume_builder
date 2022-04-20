@@ -1,52 +1,140 @@
-export const data = {
-    header: {
-      name: "James Clark",
-      address: "746 N Candy St, #25",
-      city: "Phoenix",
-      state: "AZ",
-      zip: "84920",
-      phone: "6105453672",
-      email: "jamesck@email.com",
-      summary:
-        "Noster necessitatibus ut nam, atqui epicurei lobortis nec at, est et sapientem iracundia referrentur. Nec consulatu sententiae in. Vis tamquam feugait molestiae ea. Sed an novum melius laoreet, ex eos persius quaeque. Sapientem iracundia.",
-    },
-    professional: {
-      company1: "Bilzabas Steel",
-      local1: "Salt Lake City, UT, USA",
-      position1: "Manager",
-      start1: "Jan/2015",
-      end1: "Apr/2020",
-      desc1: [
-        "Responsible for all the material handled by blablabla.",
-        "Help others on their daily tasks.",
-        "Professional photographer hired by others companies.",
-      ],
-      company2: "GumGum Productions",
-      local2: "Albany, NY, USA",
-      position2: "Intern",
-      start2: "Jul/2012",
-      end2: "Dec/2014",
-      desc2: [
-        "Print and fax documents for the entire company.",
-        "Assist CEO on daily tasks.",
-        "Provide assistance to all employees.",
-      ],
-    },
-    education: {
-      institution: "New Candles University",
-      city: "New Candles, TX, USA",
-      major: "Bachelors in Finance",
-      gradYear: "1987",
-      additional: "magna cum laude (GPA 3.95)",
-    },
-    additional: [
-      "5+ years of experience with Microsoft Office",
-      "English and Spanish speaker",
-      "Adaptability",
-      "Interpersonal Communication",
-      "Friend of all",
-    ],
-  };
-  
-  
-  
+export const templatedata = {
+	header: {
+		fullName: 'Talgat Mendekov',
+		address: '12 Avenue St, #25',
+		city: 'Chicago',
+		state: 'IL',
+		zipCode: '724349',
+		phone: '+996 703-88-06-11',
+		email: 'talgatmendekov@gmail.com',
+		summary:
+			'Noster necessitatibus ut nam, atqui epicurei lobortis nec at, est et sapientem iracundia referrentur. Nec consulatu sententiae in. Vis tamquam feugait molestiae ea. Sed an novum melius laoreet, ex eos persius quaeque. Sapientem iracundia.',
+	},
+	experience: [
+		{	id: '1',
+			company: 'Bilzabas Steel',
+			address: 'Salt Lake City, UT, USA',
+			position: 'Manager',
+			startDate: 'Jan/2015',
+			endDate: 'Apr/2020',
+			description1:
+				'Responsible for all the material handled by blablabla.',
+			description2:
+				'Responsible for all the material handled by blablabla.',
+			description3:
+				'Responsible for all the material handled by blablabla.',
+		},
+
+		{	id: '2',
+			company: 'Bilzabas Steel',
+			address: 'Salt Lake City, UT, USA',
+			position: 'Manager',
+			startDate: 'Jan/2015',
+			endDate: 'Apr/2020',
+			description1:
+				'Responsible for all the material handled by blablabla.',
+			description2:
+				'Responsible for all the material handled by blablabla.',
+			description3:
+				'Responsible for all the material handled by blablabla.',
+		},
+
+		{	id: '3',
+			company: 'Bilzabas Steel',
+			address: 'Salt Lake City, UT, USA',
+			position: 'Manager',
+			startDate: 'Jan/2015',
+			endDate: 'Apr/2020',
+			description1:
+				'Responsible for all the material handled by blablabla.',
+			description2:
+				'Responsible for all the material handled by blablabla.',
+			description3:
+				'Responsible for all the material handled by blablabla.',
+		},
+	],
+	education: [
+		{
+			institution: 'New Candles University',
+			address: 'New Candles, TX, USA',
+			major: 'Bachelors in Finance',
+			graduationYear: '1987',
+			additionalInfo: 'MBA (GPA 3.95)',
+		},
+	],
+	skills: [
+		{ skillValue: 'Good problem-solving and logic skills' },
+		{ skillValue: 'Understanding of key design principles' },
+		{ skillValue: 'Debugging' },
+		{ skillValue: 'Assets Management' },
+		{ skillValue: 'Implementing design patterns in code' },
+	],
+}
+
+export const templatedataRu = {
+	header: {
+		fullName: 'Талгат Мендеков',
+		address: '12 Авеню , #25',
+		city: 'Чикаго',
+		state: 'Илиноис',
+		zipCode: '724349',
+		phone: '+996 703-88-06-11',
+		email: 'talgatmendekov@gmail.com',
+		summary:
+			'«Я ответственный, проактивный, стрессоустойчивый, коммуникабельный, честный. Мои сильные стороны — хорошие управленческие и лидерские навыки, клиентоориентированность, системное мышление, позитивный настрой. Не пью, не курю, есть права категории B». Вот последнее предложение — прямо топчик',
+	},
+	experience: [
+		{
+			company1: 'Улица Билза',
+			address1: 'Солт Лейк Сити, ЮТА, США',
+			position1: 'Менеджер',
+			startDate1: 'Январь/2015',
+			endDate1: 'Апрель/2020',
+			description1:
+				'Ответственный за все материалы, обработанные блаблабла.',
+			description2: 'Ассистировал в повседневных задачах.',
+			description3:
+				'Профессиональный фотограф, нанятый другими компаниями.',
+		},
+		{
+			company1: 'Улица Билза',
+			address1: 'Солт Лейк Сити, ЮТА, США',
+			position1: 'Менеджер',
+			startDate1: 'Январь/2015',
+			endDate1: 'Апрель/2020',
+			description1:
+				'Ответственный за все материалы, обработанные блаблабла.',
+			description2: 'Ассистировал в повседневных задачах.',
+			description3:
+				'Профессиональный фотограф, нанятый другими компаниями.',
+		},
+		{
+			company1: 'Улица Билза',
+			address1: 'Солт Лейк Сити, ЮТА, США',
+			position1: 'Менеджер',
+			startDate1: 'Январь/2015',
+			endDate1: 'Апрель/2020',
+			description1:
+				'Ответственный за все материалы, обработанные блаблабла.',
+			description2: 'Ассистировал в повседневных задачах.',
+			description3:
+				'Профессиональный фотограф, нанятый другими компаниями.',
+		},
+	],
+	education: [
+		{
+			institution: 'Унисерситет Нью Кендлес',
+			address: 'Нью Кендлес, Техас, США',
+			major: 'Финансы, Бакалавриат',
+			graduationYear: '1987',
+			additionalInfo: 'MBA (GPA 3.95)',
+		},
+	],
+	skills: [
+		{ skillValue: 'Хорошие навыки решения проблем и логические навыки' },
+		{ skillValue: 'Понимание основных принципов дизайна.' },
+		{ skillValue: 'Дебагинг' },
+		{ skillValue: 'Управление активами' },
+		{ skillValue: 'Реализация шаблонов проектирования в коде.' },
+	],
+}

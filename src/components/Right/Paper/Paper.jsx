@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import EducationPart from './EducationPart'
 import ExperiencePart from './ExperiencePart'
 import HeaderPart from './HeaderPart'
 import SkillsPart from './SkillsPart'
 
-const Paper = () => {
-	const localData = useSelector((state) => state.builder)
 
-  useEffect(() => {
-		localStorage.setItem('@resumeData', JSON.stringify(localData))
-	}, [localData])
+const Paper = () => {
+	
   return (
     <div>
        <div size='A4' className='page'>
@@ -22,6 +18,8 @@ const Paper = () => {
     </div>
    
   )
+
+
 }
 
 export default Paper

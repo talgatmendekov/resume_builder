@@ -7,13 +7,19 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import ruLangLogo from '../../assets/ru.png'
 import enLangLogo from '../../assets/en.png'
+import { useDispatch } from 'react-redux'
+import { builderActions } from '../../store/builderSlice'
+import { setToLocaleStorage } from '../../utils/helpers/general'
 
 const Right = () => {
+
+  const dispatch = useDispatch()
+  
   const [langLogo, setLangLogo] = useState('');
 
   const { i18n, t } = useTranslation();
 
-  const setToLocaleStorage = (key, value) => localStorage.setItem(key, value)
+//   const setToLocaleStorage = (key, value) => localStorage.setItem(key, value)
 
   const changeLangHandler = (e) => {
     if(e.target.value === 'en') {
@@ -27,6 +33,11 @@ const Right = () => {
     }
   }
 
+  	const deleteContentHandlder = () => {
+		localStorage.clear();
+		dispatch(builderActions.deleteContent())
+	  };
+
 
   	const handleSaveToPDF = (e) => {
 		  e.preventDefault();
@@ -36,18 +47,18 @@ const Right = () => {
 		<div className='right'>
 			<StyledRight>
 				<Link to='#'>
-					<TiDelete title={t('right.deleteIconTitle')} className='deleteIcon' />
+					<TiDelete title={t('right.deleteIconTitle')} className='deleteIcon' onClick={deleteContentHandlder}/>
 				</Link>
 				<Link to='#' onClick={handleSaveToPDF}>
 					<MdPictureAsPdf title={t('right.savePDFIconTitle')} className='pdfIcon' />
 				</Link>
 				<div className='navbar_lang'>
 					<select className='lang_select' onChange={changeLangHandler} value={langLogo}>
-						<option value='ru'>{'Русский'}</option>
-						<option value='en'>{'English'}</option>
+						<option value='en'>{'Eng'}</option>
+						<option value='ru'>{'Рус'}</option>
 					</select>
           <span>
-            <img src={langLogo === 'en' ? enLangLogo : ruLangLogo} className='lang_icon' alt="language icon" />
+            <img src={langLogo === 'ru' ? ruLangLogo : enLangLogo} className='lang_icon' alt="language icon" />
           </span>
 				</div>
 			</StyledRight>
@@ -58,7 +69,7 @@ const Right = () => {
 
 const StyledRight = styled.div`
 	display: flex;
-	flex-direction: column;
+	justify-content: space-evenly;
 	.deleteIcon {
 		font-size: 3rem;
 		color: #e91e63;
@@ -72,6 +83,11 @@ const StyledRight = styled.div`
   .navbar_lang {
     display: flex;
     align-items: center;
+
+	option{
+	  font-weight: 500;
+	  color: red;
+  }
   }
 	.lang_select {
 		outline: none;
@@ -83,5 +99,6 @@ const StyledRight = styled.div`
   .lang_icon{
     width: 40px;
   }
+ 
 `
 export default Right

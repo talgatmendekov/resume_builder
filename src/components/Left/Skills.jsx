@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import deleteIcon from '../../assets/close.png'
 import { useTranslation } from 'react-i18next'
+import { setToLocaleStorage } from '../../utils/helpers/general'
 
 const Skills = () => {
 	const dispatch = useDispatch()
@@ -27,7 +28,7 @@ const Skills = () => {
 				}),
 			)
 		}
-	
+		setToLocaleStorage('@resumeData', {skillValue, id: skillValue})
 		setSkillValue('')
 	};
 

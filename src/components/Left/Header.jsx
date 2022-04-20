@@ -1,29 +1,28 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '../UI/Button'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
+import { setToLocaleStorage } from '../../utils/helpers/general'
 
 const Header = () => {
 	const dispatch = useDispatch();
 	const headerContentInputs = useInput();
 	const { t } = useTranslation();
 	
-	useEffect(() => {
-		if(!headerContentInputs.inputValue){
-			return
-		}
-		dispatch(
-			builderActions.addHeaderContent(headerContentInputs.inputValue)
-		)
-	}, [dispatch, headerContentInputs.inputValue])
+	const submitHeaderContentHandler = (e) => {
+		e.preventDefault()
+		dispatch(builderActions.addHeaderContent(headerContentInputs.inputValue))
+		setToLocaleStorage('@resumeData', headerContentInputs.inputValue)
+	}
+
 
 	return (
 		<StyledHeader>
 			<h2>{t('left.header.title')}</h2>
-			<form>
+			<form onSubmit={submitHeaderContentHandler}>
 				<div className='formControl-root'>
 					<label>{t('left.header.fullName')}</label>
 				</div>
@@ -117,6 +116,16 @@ const Header = () => {
 				<div>
 					<input
 						name='email'
+						type='text'
+						onChange={headerContentInputs.onChange}
+						value={headerContentInputs.inputValue.name}
+						onBlur = {headerContentInputs.onBlur}
+
+					/>
+				</div>
+				<div>
+					<input
+						name='summary'
 						type='text'
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}

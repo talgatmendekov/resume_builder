@@ -1,26 +1,46 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const HeaderPart = () => {
-	const { fullName, address, city, state, zipCode, phone, email } = useSelector(
-		(state) => state.builder.content.header
-	)
+	const { content, control } = useSelector((state) => state.builder)
+
+	const { i18n } = useTranslation()
+
+	let contentUse = content
+
+	if (control && i18n.resolvedLanguage === 'ru') {
+		contentUse = templatedataRu
+	} else if (control && i18n.resolvedLanguage === 'en') {
+		contentUse = templatedata
+	}
+	
+	let divider;
+	if (Object.keys(contentUse.header).length > 0) {
+	  divider = <hr/>;
+	} else {
+	  divider = "";
+	}
 	return (
 		<StyledHeaderPart>
 			<div className='contentHeader'>
-				<h1>{fullName}</h1>
+				<h1>{contentUse.header.fullName}</h1>
 				<p>
-					{address}
+					{contentUse.header.address}
 					<br />
-					{city} {state} {' '}{zipCode}
+					{contentUse.header.city} {contentUse.header.state}{' '}
+					{contentUse.header.zipCode}
 					<br />
-					{phone}
+					{contentUse.header.phone}
 					<br />
-          {email}
+					{contentUse.header.email}
 				</p>
-          <br />
-          <p></p>
+				<br />
+				<i>{contentUse.header.summary}</i>
+				{divider}
 			</div>
 		</StyledHeaderPart>
 	)

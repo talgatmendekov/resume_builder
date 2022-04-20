@@ -1,32 +1,35 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Button from '../UI/Button'
 import styled from 'styled-components'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
+import { setToLocaleStorage } from '../../utils/helpers/general'
 
 const Experience = () => {
 	const dispatch = useDispatch()
-	const experienceContentInputs = useInput();
+	const experienceContentInputs = useInput()
 
-	useEffect(() => {
-		if (!experienceContentInputs.inputValue) {
-			return
+	const submitExperienceDataHandler = (e) => {
+		e.preventDefault()
+		if (experienceContentInputs.valueIsValid) {
+			dispatch(
+				builderActions.addExperienceContent(
+					experienceContentInputs.inputValue,
+				),
+			)
 		}
-		dispatch(
-			builderActions.addExperienceContent(
-				experienceContentInputs.inputValue,
-			),
-		)
-	}, [dispatch, experienceContentInputs.inputValue])
+		setToLocaleStorage('@resumeData', experienceContentInputs.inputValue)
+		experienceContentInputs.onClear()
+	}
 
-	const { t } = useTranslation();
+	const { t } = useTranslation()
 
 	return (
 		<StyledExperienceSection>
 			<h2>{t('left.experience.title')}</h2>
-			<form>
+			<form onSubmit={submitExperienceDataHandler}>
 				<h4>{t('left.experience.company1.place')}</h4>
 				<div className='formControl-root'>
 					<label>{t('left.experience.company1.name')}</label>
@@ -34,10 +37,10 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='company1'
+						name='company'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.company}
 					/>
 				</div>
 
@@ -47,10 +50,10 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='address1'
+						name='address'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.address}
 					/>
 				</div>
 				<div className='formControl-root'>
@@ -59,10 +62,10 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='position1'
+						name='position'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.position}
 					/>
 				</div>
 
@@ -72,10 +75,10 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='startDate1'
+						name='startDate'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.startDate}
 					/>
 				</div>
 				<div className='formControl-root'>
@@ -84,10 +87,10 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='endDate1'
+						name='endDate'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.endDate}
 					/>
 				</div>
 
@@ -97,10 +100,10 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='firstDescription1'
+						name='description1'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.description1}
 					/>
 				</div>
 				<div className='formControl-root'>
@@ -109,101 +112,27 @@ const Experience = () => {
 
 				<div>
 					<input
-						name='secondDescription1'
+						name='description2'
 						type='text'
 						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
+						value={experienceContentInputs.inputValue.description2}
 					/>
 				</div>
+				<div className='formControl-root'>
+					<label>{t('left.experience.company1.description')}</label>
+				</div>
+
+				<div>
+					<input
+						name='description3'
+						type='text'
+						onChange={experienceContentInputs.onChange}
+						value={experienceContentInputs.inputValue.description3}
+					/>
+				</div>
+
 				<hr />
-				<h4>{t('left.experience.company2.place')}</h4>
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.name')}</label>
-				</div>
 
-				<div>
-					<input
-						name='company2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
-
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.address')}</label>
-				</div>
-
-				<div>
-					<input
-						name='address2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.position')}</label>
-				</div>
-
-				<div>
-					<input
-						name='position2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
-
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.startDate')}</label>
-				</div>
-
-				<div>
-					<input
-						name='startDate2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.endDate')}</label>
-				</div>
-
-				<div>
-					<input
-						name='endDate2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
-
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.description')}</label>
-				</div>
-
-				<div>
-					<input
-						name='firstDescription2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<label>{t('left.experience.company2.description')}</label>
-				</div>
-
-				<div>
-					<input
-						name='secondDescription2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.name}
-					/>
-				</div>
 				<Button>{t('left.experience.addBtn')}</Button>
 			</form>
 		</StyledExperienceSection>
