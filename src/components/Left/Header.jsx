@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-import { StyledInput } from './styles'
+import { StyledInput, StyledAddButton } from './styles'
 
 
 const Header = () => {
@@ -130,7 +130,7 @@ const Header = () => {
 						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
-				<Button>{t('left.header.addBtn')}</Button>
+				<StyledAddButton>{t('left.header.addBtn')}</StyledAddButton>
 			</form>
 		</StyledHeader>
 	)
@@ -151,9 +151,6 @@ const StyledHeader = styled.div`
 			top: 0;
 			left: 0;
 			position: absolute;
-		}
-		input {
-			
 		}
 		textarea {
 			margin: 1rem;

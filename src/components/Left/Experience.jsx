@@ -5,7 +5,7 @@ import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { StyledInput } from './styles'
+import { StyledInput, StyledAddButton } from './styles'
 
 
 const Experience = () => {
@@ -138,7 +138,7 @@ const Experience = () => {
 
 				<hr />
 
-				<Button>{t('left.experience.addBtn')}</Button>
+				<StyledAddButton>{t('left.experience.addBtn')}</StyledAddButton>
 			</form>
 		</StyledExperienceSection>
 	)

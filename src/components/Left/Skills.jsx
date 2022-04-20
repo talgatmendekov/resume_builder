@@ -6,7 +6,7 @@ import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
-import { StyledInput } from './styles'
+import { StyledInput, StyledAddButton } from './styles'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
 	console.log(value)
@@ -100,7 +100,7 @@ const Skills = () => {
 						<ul>{skillOption}</ul>
 					</section>
 				</div>
-				<Button className='addBtn'>{t('left.skills.addBtn')}</Button>
+				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
 			</form>
 		</StyledSkills>
 	)
@@ -177,26 +177,7 @@ const StyledSkills = styled.div`
 				opacity: 0;
 			}
 		}
-		.addBtn {
-			font-size: 1.2rem;
-			border-radius: 3px;
-			width: 80%;
-			padding: 0.5 1rem;
-			background-color: beige;
-			border: none;
-			color: #5c5c85;
-			font-weight: bold;
-			text-transform: uppercase;
-			box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
-			transition: 0.2s;
-			:hover{
-				background-color: #5c5c85;
-				color: white;
-			}
-			:active{
-				box-shadow: 0 0 0 ;
-			}
-		}
+		
 	}
 `
 export default Skills

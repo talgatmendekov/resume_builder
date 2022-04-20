@@ -5,7 +5,7 @@ import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { StyledInput } from './styles'
+import { StyledInput, StyledAddButton } from './styles'
 
 const Education = () => {
 	const dispatch = useDispatch()
@@ -88,7 +88,7 @@ const Education = () => {
 					/>
 				</div>
 
-				<Button className='addBtn'>{t('left.education.addBtn')}</Button>
+				<StyledAddButton>{t('left.education.addBtn')}</StyledAddButton>
 			</form>
 		</StyledEducationSection>
 	)
@@ -111,12 +111,6 @@ const StyledEducationSection = styled.div`
 			position: absolute;
 		}
 		
-		.addBtn{
-			font-size: 1.2rem;
-			border-radius: 8px;
-			
-		
-		}
 	}
 `
 export default Education
