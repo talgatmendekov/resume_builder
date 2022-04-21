@@ -8,7 +8,7 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 const HeaderPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
 
-	console.log(content, control)
+	
 	const { i18n } = useTranslation()
 
 	let contentUse = content

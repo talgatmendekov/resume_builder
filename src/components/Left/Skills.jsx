@@ -28,11 +28,9 @@ const SkillsContainer = ({ onClick, value, showSelect }) => {
 
 const Skills = () => {
 	const dispatch = useDispatch()
-	const test = useSelector((state) => state.builder.content.skills)
-	const [showSelect, setShowSelect] = useState(true)
-	console.log(test, 'test')
 	const { skills } = useSelector((state) => state.builder.content)
 	const [skillValue, setSkillValue] = useState('')
+	const [showSelect, setShowSelect] = useState(true)
 
 	const { t } = useTranslation()
 
