@@ -10,7 +10,8 @@ export const StyledInput = styled.input`
 	border: 0.5px solid #f0cece;
 	outline: none;
 	:hover {
-		border: 1px solid red;
+		border: 1px solid #cfafaf;
+		box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
 	}
 `
 export const StyledAddButton = styled.button`

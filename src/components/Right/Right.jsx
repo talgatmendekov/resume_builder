@@ -112,6 +112,9 @@ const StyledRight = styled.div`
 	}
 	li{
 		list-style: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		translate: 0.5s;
 		animation-delay: .3s;
 		:hover{

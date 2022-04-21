@@ -87,7 +87,7 @@ const Basic = () => {
 const StyledBasic = styled.div`
 	background-color: #fff;
 	box-shadow: 0 0 0.5cm #7b7d7d;
-	width: 450px;
+	width: 490px;
 	
 	.headerLeft {
 		display: flex;
@@ -124,12 +124,14 @@ const StyledBasic = styled.div`
 		justify-content: space-evenly;
 		.nav{
 			font-size: 1.2rem;
-			font-weight: 500;
+			font-weight: 700;
 			background: none;
 			color: #4d9ee9;
 			border: 0;
 			:hover{
 				background: #a4c2e4;
+				color: #fff;
+				box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
 			}
 			
 		}
