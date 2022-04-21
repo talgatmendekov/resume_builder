@@ -4,6 +4,9 @@ body {
   background: #f2f3f4;
   width: 98vw;
 }
+:root{
+  --clr:#222327;
+}
 
 .app {
   width: 1400px;

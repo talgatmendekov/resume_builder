@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/icons/logo.svg'
 import Button from '../UI/Button'
 import styled from 'styled-components'
 import { Link, Outlet } from 'react-router-dom'
@@ -88,6 +88,7 @@ const StyledBasic = styled.div`
 	background-color: #fff;
 	box-shadow: 0 0 0.5cm #7b7d7d;
 	width: 450px;
+	
 	.headerLeft {
 		display: flex;
 		justify-content: space-between;

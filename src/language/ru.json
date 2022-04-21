@@ -62,7 +62,7 @@
 
     "right": {
         "deleteIconTitle": "Удалить данные",
-        "savePDFIconTitle": "Сохранить в PDF"
+        "savePDFIconTitle": "Сохранить"
     },
 
     "template": {
