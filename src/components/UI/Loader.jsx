@@ -26,6 +26,7 @@ const BounceAnimation = keyframes`
   }
 `
 const LoadingWrapper = styled.div`
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
