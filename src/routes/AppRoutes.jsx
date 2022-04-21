@@ -1,6 +1,7 @@
 import React, {Suspense} from 'react'
 import {Routes, Route} from 'react-router-dom'
 import '../App.css'
+import Loader from '../components/UI/Loader'
 
 const Template = React.lazy(()=> import('../components/Template'))
 const Basic = React.lazy(()=> import('../components/Left/Basic'))
@@ -12,7 +13,7 @@ const Right = React.lazy(()=> import('../components/Right/Right'))
 
 const AppRoutes = () => {
   return (
-      <Suspense fallback={<p>Loading</p>}>
+      <Suspense fallback={<Loader/>}>
     <div className='app'>
 	
 			<Routes>
