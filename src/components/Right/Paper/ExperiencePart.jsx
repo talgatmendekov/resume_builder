@@ -22,7 +22,7 @@ const ExperiencePart = () => {
 		contentUse = content
 	}
 
-	console.log(templatedata);
+	
 	let experienceContent = contentUse.experience.map((experience, index) => {
 		return (
 			<div key={index}>
