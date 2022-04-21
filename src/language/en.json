@@ -66,8 +66,8 @@
     },
 
     "right": {
-        "deleteIconTitle": "Delete All Data",
-        "savePDFIconTitle": "Save to PDF"
+        "deleteIconTitle": "Delete All",
+        "savePDFIconTitle": "Save"
     },
 
     "template": {
