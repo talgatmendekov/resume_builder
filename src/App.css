@@ -6,6 +6,7 @@ body {
 }
 :root{
   --clr:#222327;
+  --red: #ff6f69;
 }
 
 .app {

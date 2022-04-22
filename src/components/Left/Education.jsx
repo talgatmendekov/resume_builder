@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 const Education = () => {
 	const dispatch = useDispatch()
 	const educationContentInputs = useInput()
+	const navigate = useNavigate()
 
 	const { t } = useTranslation();
 
@@ -18,6 +20,10 @@ const Education = () => {
 		educationContentInputs.onClear()
 	}
 
+	const navigateHandler = (e) => {
+		e.preventDefault()
+		navigate('/basic/skills')
+	}
 	return (
 		<>
 			<h2>{t('left.education.title')}</h2>
@@ -87,6 +93,7 @@ const Education = () => {
 				</div>
 
 				<StyledAddButton>{t('left.education.addBtn')}</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
 			</StyledForm>
 		</>
 	)

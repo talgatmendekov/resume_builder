@@ -14,6 +14,7 @@ My second individual React.js project. The goal was : <br/>
 * React.js (Hooks, Custom Hook useInput, Redux-Toolkit, Router 6)
 * react-i18next (localization)
 * Styled-components
+* React-phone-number-input
 
 ## Main Features
 
