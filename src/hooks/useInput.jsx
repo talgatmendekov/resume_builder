@@ -24,6 +24,7 @@ export const useInput = () => {
 		inputValue,
 		valueIsInValid,
 		valueIsValid,
+		setInputValue,
 		onChange: (e) => {
 			setInputValue({ ...inputValue, [e.target.name]: e.target.value })
 			setName(e.target.name)

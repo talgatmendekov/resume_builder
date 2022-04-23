@@ -9,6 +9,7 @@ import enLangLogo from '../../assets/icons/en.png'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { setToLocaleStorage } from '../../utils/helpers/general'
+import 'react-phone-number-input/style.css'
 
 const Right = () => {
 	const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const Right = () => {
 		if (e.target.value === 'en') {
 			setLangLogo('en')
 			i18n.changeLanguage('en')
+			
 			setToLocaleStorage('lang', 'en')
 		} else {
 			setLangLogo('ru')

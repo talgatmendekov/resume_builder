@@ -4,12 +4,15 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
+import { useNavigate } from 'react-router-dom'
 
 
 const Experience = () => {
 	const dispatch = useDispatch()
 	
 	const experienceContentInputs = useInput()
+
+	const navigate = useNavigate()
 
 	const submitExperienceDataHandler = (e) => {
 		e.preventDefault()
@@ -25,6 +28,10 @@ const Experience = () => {
 
 	}
 
+	const navigateHandler = (e) => {
+		e.preventDefault()
+		navigate('/basic/education')
+	}
 	const { t } = useTranslation()
 
 	return (
@@ -135,6 +142,7 @@ const Experience = () => {
 				<hr />
 
 				<StyledAddButton>{t('left.experience.addBtn')}</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
 			</StyledForm>
 		</>
 	)

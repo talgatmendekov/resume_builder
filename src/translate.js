@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 import ru from './language/ru.json'
 import en from './language/en.json'
 
+
 i18n
     .use(initReactI18next)
     .init({
@@ -14,6 +15,7 @@ i18n
                 translation: en
             }
         },
+
         lng: "en", // if you're using a language detector, do not define the lng option
         fallbackLng: "en",
 

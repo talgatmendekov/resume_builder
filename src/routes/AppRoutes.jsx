@@ -10,7 +10,7 @@ const Experience = React.lazy(()=> import('../components/Left/Experience'))
 const Skills = React.lazy(()=> import('../components/Left/Skills'))
 const Education = React.lazy(()=> import('../components/Left/Education'))
 const Right = React.lazy(()=> import('../components/Right/Right'))
-
+const Finalize = React.lazy(()=> import('../components/Finalize'))
 const AppRoutes = () => {
   return (
       <Suspense fallback={<Loader/>}>
@@ -24,6 +24,7 @@ const AppRoutes = () => {
 					<Route path='education' element={<Education/>}/>
 					<Route path='experience' element={<Experience/>}/>
 					<Route path='skills' element={<Skills/>}/>
+					<Route path='finalize' element={<Finalize/>}/>
 				</Route>
 			</Routes>
 		<Right/>
