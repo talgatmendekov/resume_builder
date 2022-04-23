@@ -31,6 +31,7 @@ const Skills = () => {
 	const { skills } = useSelector((state) => state.builder.content)
 	const [skillValue, setSkillValue] = useState('')
 	const [showSelect, setShowSelect] = useState(true)
+	
 
 	const { t } = useTranslation()
 
@@ -97,6 +98,7 @@ const Skills = () => {
 					</section>
 				</div>
 				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
+				<StyledAddButton>Next</StyledAddButton>
 			</StyledForm>
 		</StyledSkills>
 	)
