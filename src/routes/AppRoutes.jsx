@@ -24,8 +24,9 @@ const AppRoutes = () => {
 					<Route path='education' element={<Education/>}/>
 					<Route path='experience' element={<Experience/>}/>
 					<Route path='skills' element={<Skills/>}/>
-					<Route path='finalize' element={<Finalize/>}/>
+					
 				</Route>
+				<Route path='/finalize' element={<Finalize/>}/>
 			</Routes>
 		<Right/>
 

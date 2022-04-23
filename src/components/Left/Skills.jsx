@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm, StyledSkills} from './styles'
+import { useNavigate } from 'react-router-dom'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
 	
@@ -32,7 +33,7 @@ const Skills = () => {
 	const [skillValue, setSkillValue] = useState('')
 	const [showSelect, setShowSelect] = useState(true)
 	
-
+	const navigate = useNavigate()
 	const { t } = useTranslation()
 
 	const skillsInputChangeHandler = (e) => {
@@ -53,6 +54,7 @@ const Skills = () => {
 		setSkillValue('')
 	}
 
+
 	const deleteSkillButtonHandler = (id) => {
 		dispatch(builderActions.deleteSkillButton(id))
 	}
@@ -72,6 +74,10 @@ const Skills = () => {
 		setShowSelect(false)
 	}
 
+	const navigateHandler = (e) => {
+		e.preventDefault()
+		navigate('/finalize')
+	}
 	return (
 		<StyledSkills>
 			<h2>{t('left.skills.title')}</h2>
@@ -98,7 +104,7 @@ const Skills = () => {
 					</section>
 				</div>
 				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
-				<StyledAddButton>Next</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
 			</StyledForm>
 		</StyledSkills>
 	)
