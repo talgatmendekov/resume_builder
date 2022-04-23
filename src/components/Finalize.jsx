@@ -3,43 +3,147 @@ import styled from 'styled-components'
 import logo from '../assets/icons/logo.svg'
 import Button from './UI/Button'
 import { useNavigate } from 'react-router-dom'
+import { MdEdit } from 'react-icons/md'
+import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { saveActions } from '../store/saveSlice'
 
 const Finalize = () => {
+	const dispatch = useDispatch()
+	const resumeContent = useSelector((state) => state.builder)
+	const { resumes } = useSelector((state) => state.save)
+	console.log(resumes)
+	const navigate = useNavigate()
 
-  const navigate = useNavigate()
+	const { t } = useTranslation()
 
-  const navigateHandler = () => {
-      navigate('/basic/header')
-  }
-  return (
-    <>
-		<StyledBasic className='left'>
-			<div className='headerLeft'>
-				<div>
-					
+	const navigateHandler = () => {
+		navigate('/basic/header')
+	}
+
+	const saveResumeHandler = () => {
+		dispatch(
+			saveActions.saveResume({
+				...resumeContent,
+				id: Date.now().toString(),
+			}),
+		)
+	}
+	const selectResumeHandler = (id) => {
+		dispatch(saveActions.resumeId(id))
+	}
+	return (
+		<>
+			<StyledBasic className='left'>
+				<div className='headerLeft'>
+					<div>
 						<img src={logo} alt='logo' />
-					
+					</div>
+					<div>
+						<Button onClick={navigateHandler}>
+							{t('left.back')}
+						</Button>
+					</div>
 				</div>
 				<div>
-          <Button onClick ={navigateHandler}>Back</Button>
-        </div>
-			</div>
-			<div>
-				<div className='topLeft'>
-				
+					<div className='topLeft'>
+						<Button onClick={saveResumeHandler}>
+							{t('left.saveResume')}
+						</Button>
+					</div>
 				</div>
-			</div>
-			<hr />
-			<div className='formSection'>
-			
-			</div>
-		</StyledBasic>
+				<hr />
+				<div className='formSection'>
+					<EditSection>
+						<Button className='editBtn'>
+							{t('left.editHeader')} <MdEdit />
+						</Button>
+						<Button className='editBtn'>
+							{t('left.editExperience')}
+							<MdEdit />
+						</Button>
+						<Button className='editBtn'>
+							{t('left.editEducation')}
+							<MdEdit />
+						</Button>
+						<Button className='editBtn'>
+							{t('left.editSkills')}
+							<MdEdit />
+						</Button>
+					</EditSection>
+				</div>
+				<EditSection>
+					{resumes.map((resume) => (
+						<ResumeStyled
+							onClick={() => selectResumeHandler(resume.id)}
+							key={resume.id}
+						>
+							{resume.content.header.fullName}
+						</ResumeStyled>
+					))}
+				</EditSection>
+			</StyledBasic>
 		</>
-  )
+	)
 }
 
+const EditSection = styled.div`
+	margin-top: 20px;
+	width: 90%;
+	height: 100%;
+	padding: 1rem;
+	background-color: rgba(228, 212, 212, 0.3);
+	box-shadow: rgb(0 0 0 / 30%) 5px 5px 50px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	-webkit-box-align: center;
+	align-items: center;
+	.editBtn {
+		width: 100%;
+		margin-bottom: 1rem;
+		padding: 0.6rem 1rem;
+		background-color: rgb(255, 255, 255);
+		font-size: 20px;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: rgb(25, 20, 51);
+		box-shadow: rgb(0 0 0 / 30%) 2px 2px 10px;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: all 0.2s ease 0s;
+		border: none;
+		display: flex;
+		justify-content: space-between;
+		:hover {
+			background-color: #940e0e;
+			color: white;
+		}
+	}
+`
+const ResumeStyled = styled.div`
+	width: 100%;
+	margin-bottom: 1rem;
+	padding: 0.6rem 1rem;
+	background-color: rgb(255, 255, 255);
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: rgb(25, 20, 51);
+	box-shadow: rgb(0 0 0 / 30%) 2px 2px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+	border: none;
+	display: flex;
+	justify-content: space-between;
+	:hover {
+		background-color: #940e0e;
+		color: white;
+	}
+`
 const StyledBasic = styled.div`
-  background-color: #fcdfdf;
+  background-color: #f5ecec;
 	box-shadow: 0 0 0.5cm #7b7d7d;
 	width: 490px;
 	
@@ -90,4 +194,4 @@ const StyledBasic = styled.div`
 		margin: 25px;
 	}
 `
-export default Finalize;
+export default Finalize

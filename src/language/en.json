@@ -62,7 +62,17 @@
             "title": "Skills",
             "section": "Skills Section",
             "addBtn": "Add"
-        }
+        },
+        "next": "Next",
+        "editHeader": "Edit Header",
+        "editEducation": "Edit Education",
+        "editExperience": "Edit Experience",
+        "editSkills": "Edit Skills",
+        "back": "Back",
+        "saveResume": "Save your Resume"
+       
+        
+        
     },
 
     "right": {

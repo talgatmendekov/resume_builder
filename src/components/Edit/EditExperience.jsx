@@ -142,7 +142,7 @@ const Experience = () => {
 				<hr />
 
 				<StyledAddButton>{t('left.experience.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>{t('left.next')}</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
 			</StyledForm>
 		</>
 	)

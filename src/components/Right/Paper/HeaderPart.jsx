@@ -7,8 +7,8 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const HeaderPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
+	const { resumes, resumeId } = useSelector((state) => state.save)
 
-	
 	const { i18n } = useTranslation()
 
 	let contentUse = content
@@ -17,6 +17,9 @@ const HeaderPart = () => {
 		contentUse = templatedataRu
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
+	} else if (resumeId) {
+		const currentItem = resumes.find((el) => el.id === resumeId)
+		contentUse = currentItem.content
 	}
 
 	let divider
