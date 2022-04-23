@@ -7,26 +7,27 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const EducationPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
+	const { resumes, resumeId } = useSelector((state) => state.save)
+
 
 	const { t, i18n } = useTranslation()
 
-	let contentUse = null
+	let contentUse = content
 
 	if (control && i18n.resolvedLanguage === 'ru') {
 		contentUse = templatedataRu
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
-	}else{
-		contentUse = content
+	} else if (resumeId) {
+		const currentItem = resumes.find((el) => el.id === resumeId)
+		contentUse = currentItem.content
 	}
 
-	
 	let educationContent = contentUse.education.map((education, index) => {
 		return (
 			<div key={index}>
 				<p>
-					<strong>{education.institution}</strong>{' '}
-					{education.address}
+					<strong>{education.institution}</strong> {education.address}
 				</p>
 				<p>
 					{education.major} {education.graduationYear}
@@ -60,8 +61,8 @@ const StyledEducationPart = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 94px;
-	h3{
-		strong{
+	h3 {
+		strong {
 			text-transform: uppercase;
 		}
 	}

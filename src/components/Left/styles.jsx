@@ -51,21 +51,22 @@ export const StyledForm = styled.form`
 		position: relative;
 	}
 	.PhoneInput {
-		margin-bottom: 1rem;
-		margin-top: 1rem;
-		padding: 1rem;
-		width: 70%;
-		color: gray;
-		background: #f8eded;
-		border: 0.5px solid #f0cece;
-		outline: none;
-		:hover {
-			border: 1px solid #cfafaf;
-			box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
-		}
-		--focus{
-			background: red;
-		}
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+			padding: 1rem;
+			width: 70%;
+			color: gray;
+			background: #f8eded;
+			border: 0.5px solid #f0cece;
+			outline: none;
+			:hover {
+				border: 1px solid #cfafaf;
+				box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
+			}
+			:focus{
+				background-color: #df8888;
+				outline: none;
+			}
 	}
 `
 export const StyledSkills = styled.div`

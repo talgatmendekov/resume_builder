@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next'
 
 const SkillsPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
+	const { resumes, resumeId } = useSelector((state) => state.save)
+
 	const { t, i18n } = useTranslation()
 
 	let contentUse = content
@@ -15,6 +17,9 @@ const SkillsPart = () => {
 		contentUse = templatedataRu
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
+	} else if (resumeId) {
+		const currentItem = resumes.find((el) => el.id === resumeId)
+		contentUse = currentItem.content
 	}
 
 	// If there is no data, the Title of the section will not be displayed
@@ -52,8 +57,8 @@ const StyledSkillsPart = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 94px;
-	h3{
-		strong{
+	h3 {
+		strong {
 			text-transform: uppercase;
 		}
 	}

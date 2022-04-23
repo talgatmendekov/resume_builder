@@ -104,7 +104,7 @@ const Skills = () => {
 					</section>
 				</div>
 				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>{t('left.next')}</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
 			</StyledForm>
 		</StyledSkills>
 	)

@@ -7,28 +7,28 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const ExperiencePart = () => {
 	const { content, control } = useSelector((state) => state.builder)
+	const { resumes, resumeId } = useSelector((state) => state.save)
 
 	//if the 'control' is TRUE - use 'Fake state' to show the preview of the template
 
 	const { t, i18n } = useTranslation()
 
-	let contentUse = null
+	let contentUse = content
 
 	if (control && i18n.resolvedLanguage === 'ru') {
 		contentUse = templatedataRu
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
-	}else{
-		contentUse = content
+	} else if (resumeId) {
+		const currentItem = resumes.find((el) => el.id === resumeId)
+		contentUse = currentItem.content
 	}
 
-	
 	let experienceContent = contentUse.experience.map((experience, index) => {
 		return (
 			<div key={index}>
 				<p>
-					<strong>{experience.company}</strong>{' '}
-					{experience.address}
+					<strong>{experience.company}</strong> {experience.address}
 				</p>
 				<p>
 					{experience.position} {experience.startDate}{' '}
@@ -42,7 +42,6 @@ const ExperiencePart = () => {
 			</div>
 		)
 	})
-
 
 	//   If there is no data, the Title of the section will not be displayed
 	let title
@@ -68,8 +67,8 @@ const StyledExperiencePart = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 94px;
-	h3{
-		strong{
+	h3 {
+		strong {
 			text-transform: uppercase;
 		}
 	}
