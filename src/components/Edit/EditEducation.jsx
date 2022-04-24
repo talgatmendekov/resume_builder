@@ -1,37 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useInput } from '../../hooks/useInput'
-import { useDispatch } from 'react-redux'
-import { builderActions } from '../../store/builderSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from '../Left/styles'
-import { useNavigate } from 'react-router-dom'
+import { saveActions } from '../../store/saveSlice'
+import Button from '../UI/Button'
+
 
 const EditEducation = () => {
 	const dispatch = useDispatch()
+	const {resumes, resumeId} = useSelector(state => state.save)
+	const [showEdit, setShowEdit] = useState(false)
+	const [idEducation, setIdEducation] = useState(null)
 	const educationContentInputs = useInput()
-	const navigate = useNavigate()
-
 	const { t } = useTranslation()
+
+	const currentResume = resumes.find(resume => resume.id === resumeId) ||resumes[resumes.length -1]
+
 
 	const submitEducationDataHandler = (e) => {
 		e.preventDefault()
 
 		dispatch(
-			builderActions.addEducationContent(
-				educationContentInputs.inputValue,
-			),
+			saveActions.editEducation({
+				values: educationContentInputs.inputValue,
+				id: idEducation,
+				resumeId,
+			})
 		)
 		educationContentInputs.onClear()
 	}
 
-	const navigateHandler = (e) => {
+	const hideModalHandler = (e) => {
 		e.preventDefault()
-		navigate('/basic/skills')
+		dispatch(saveActions.hideModal())
+	}
+	const editEducationHandler = (id) => {
+		setShowEdit(true)
+		setIdEducation(id)
+		dispatch(saveActions.resumeId(currentResume.id))
 	}
 	return (
 		<>
 			<h2>{t('left.education.title')}</h2>
-			<StyledForm onSubmit={submitEducationDataHandler}>
+			{!showEdit && (
+				<Div>
+					{currentResume.content.education.map(el => (
+						<DivItem key={el.id}>
+							<Button onClick={()=> editEducationHandler(el.id)}>Изменить контент</Button>
+						</DivItem>
+					))}
+				</Div>
+			)}
+			{showEdit && (
+				<StyledForm onSubmit={submitEducationDataHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.education.institution')}</StyledLabel>
 				</div>
@@ -104,13 +127,25 @@ const EditEducation = () => {
 					/>
 				</div>
 
-				<StyledAddButton>{t('left.education.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>
-					Next
+				<StyledAddButton>{t('left.editBtn')}</StyledAddButton>
+				<StyledAddButton onClick={hideModalHandler}>
+				{t('left.logoutBtn')}
 				</StyledAddButton>
 			</StyledForm>
+			)}
+			
 		</>
 	)
 }
 
+const Div = styled.div`
+	width: 90%;
+	padding: 1rem;
+`
+const DivItem = styled.div`
+	.editBtn{
+		padding: 0.5rem;
+		width: 250px;
+	}
+`
 export default EditEducation

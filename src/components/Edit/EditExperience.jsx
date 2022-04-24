@@ -5,12 +5,14 @@ import { useTranslation } from 'react-i18next'
 import {  StyledInput, StyledAddButton, StyledLabel, StyledForm } from '../Left/styles'
 import styled from 'styled-components'
 import { saveActions } from '../../store/saveSlice'
+import Button from '../UI/Button'
 
 const EditExperience = () => {
 	const dispatch = useDispatch()
 	const { resumes, resumeId } = useSelector((state) => state.save)
 	const [showEdit, setShowEdit] = useState(false)
 	const [idExperience, setIdExperience] = useState(null)
+	console.log(resumes, 'resumes')
 
 	const currentResume =
 		resumes.find((resume) => resume.id === resumeId) ||
@@ -24,28 +26,28 @@ const EditExperience = () => {
 
 	const submitExperienceDataHandler = (e) => {
 		e.preventDefault()
-		if (experienceContentInputs.valueIsValid) {
-			dispatch(
-				saveActions.editExperience({
-					values: experienceContentInputs.inputValue,
-					id: idExperience,	
-					resumeId: resumeId,
-				}),
-			)
-		}
+		dispatch(
+			saveActions.editExperience({
+				values: experienceContentInputs.inputValue,
+				id: idExperience,	
+				resumeId: resumeId,  
+			}),
+		)
 
 		experienceContentInputs.onClear()
 	}
 
-	const navigateHandler = (e) => {
+	const hideModalHandler = (e) => {
 		e.preventDefault()
 		dispatch(saveActions.hideModal())
 	}
 	const { t } = useTranslation()
-	const selectExperience = (id) => {
+	 
+	const editExperienceHandler = (id) => {
 		setShowEdit(true)
 		setIdExperience(id)
 		dispatch(saveActions.resumeId(currentResume.id))
+		
 	}
 	return (
 		<>
@@ -53,8 +55,9 @@ const EditExperience = () => {
 			{!showEdit && (
 				<Div>
 					{currentResume.content.experience.map((el) => (
-						<DivItem onClick={() => selectExperience(el.id)}>
-							{el.startDate}
+						<DivItem key={el.id}>
+							
+							<Button className='editBtn' onClick={() => editExperienceHandler(el.id)}>Изменить контент</Button>
 						</DivItem>
 					))}
 				</Div>
@@ -73,7 +76,7 @@ const EditExperience = () => {
 							name='company'
 							type='text'
 							onChange={experienceContentInputs.onChange}
-							value={experienceContentInputs.inputValue.company}
+							value={experienceContentInputs.inputValue.company || ''}
 						/>
 					</div>
 
@@ -88,7 +91,7 @@ const EditExperience = () => {
 							name='address'
 							type='text'
 							onChange={experienceContentInputs.onChange}
-							value={experienceContentInputs.inputValue.address}
+							value={experienceContentInputs.inputValue.address|| ''}
 						/>
 					</div>
 					<div className='formControl-root'>
@@ -102,7 +105,7 @@ const EditExperience = () => {
 							name='position'
 							type='text'
 							onChange={experienceContentInputs.onChange}
-							value={experienceContentInputs.inputValue.position}
+							value={experienceContentInputs.inputValue.position || ''}
 						/>
 					</div>
 
@@ -117,7 +120,7 @@ const EditExperience = () => {
 							name='startDate'
 							type='text'
 							onChange={experienceContentInputs.onChange}
-							value={experienceContentInputs.inputValue.startDate}
+							value={experienceContentInputs.inputValue.startDate || ''}
 						/>
 					</div>
 					<div className='formControl-root'>
@@ -131,7 +134,7 @@ const EditExperience = () => {
 							name='endDate'
 							type='text'
 							onChange={experienceContentInputs.onChange}
-							value={experienceContentInputs.inputValue.endDate}
+							value={experienceContentInputs.inputValue.endDate || ''}
 						/>
 					</div>
 
@@ -147,7 +150,7 @@ const EditExperience = () => {
 							type='text'
 							onChange={experienceContentInputs.onChange}
 							value={
-								experienceContentInputs.inputValue.description1
+								experienceContentInputs.inputValue.description1 || ''
 							}
 						/>
 					</div>
@@ -163,7 +166,7 @@ const EditExperience = () => {
 							type='text'
 							onChange={experienceContentInputs.onChange}
 							value={
-								experienceContentInputs.inputValue.description2
+								experienceContentInputs.inputValue.description2 || ''
 							}
 						/>
 					</div>
@@ -179,18 +182,18 @@ const EditExperience = () => {
 							type='text'
 							onChange={experienceContentInputs.onChange}
 							value={
-								experienceContentInputs.inputValue.description3
+								experienceContentInputs.inputValue.description3 || ''
 							}
 						/>
 					</div>
 
 					<hr />
 
-					<StyledAddButton>
-						{t('left.experience.addBtn')}
+					<StyledAddButton className='edit'>
+						{t('left.editBtn')}
 					</StyledAddButton>
-					<StyledAddButton onClick={navigateHandler}>
-						Next
+					<StyledAddButton onClick={hideModalHandler}>
+						{t('left.logoutBtn')}
 					</StyledAddButton>
 				</StyledForm>
 			)}
@@ -202,11 +205,10 @@ const Div = styled.div`
 	padding: 1rem;
 `
 const DivItem = styled.div`
-	width: 100%;
-	padding: 0.5rem 1rem;
-	margin-bottom: 5px;
-	background-color: whitesmoke;
-	cursor: pointer;
+	.editBtn{
+		padding: 0.5rem;
+		width: 250px;
+	}
 `
 
 export default EditExperience

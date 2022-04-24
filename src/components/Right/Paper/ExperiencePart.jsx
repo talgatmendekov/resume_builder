@@ -8,7 +8,7 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 const ExperiencePart = () => {
 	const { content, control } = useSelector((state) => state.builder)
 	const { resumes, resumeId } = useSelector((state) => state.save)
-
+	console.log(resumeId, "resumeID");
 	//if the 'control' is TRUE - use 'Fake state' to show the preview of the template
 
 	const { t, i18n } = useTranslation()
@@ -21,11 +21,10 @@ const ExperiencePart = () => {
 		contentUse = templatedata
 	} else if (resumes.length > 0) {
 		const currentItem =
-			resumes.find((el) => el.id === resumeId) ||
-			resumes[resumes.length - 1]
+			resumes[resumes.length - 1] ||
+			resumes.find((el) => el.id === resumeId)
 		contentUse = currentItem.content
 	}
-
 	let experienceContent = contentUse.experience.map((experience, index) => {
 		return (
 			<div key={index}>

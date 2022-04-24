@@ -9,28 +9,9 @@ import { MdEdit } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../../store/saveSlice'
+import Modal from '../UI/Modal'
 
-// const RESUMES = [
-// 	{
-// 		title: 'EDIT HEADER',
-// 		component: <EditHeader />,
-// 	},
 
-// 	{
-// 		title: 'EDIT EDUCATION',
-// 		component: <EditEducation />,
-// 	},
-
-// 	{
-// 		title: 'EDIT EXPERIENCE',
-// 		component: <EditExperience />,
-// 	},
-
-// 	{
-// 		title: 'EDIT SKILLS',
-// 		component: <EditSkills />,
-// 	},
-// ]
 
 const EditResume = () => {
 	const { resumes } = useSelector((state) => state.save)
@@ -48,7 +29,7 @@ const EditResume = () => {
 		{resumes.length > 0 && (
 			<EditSection>
 				<h2>Resume edit section</h2>
-			{modal && <BackDrop />}
+			{/* {modal && <BackDrop />} */}
 			{modal && <Modal>{showEdit}</Modal>}
 			<Button
 				onClick={() => editHandler(<EditHeader />)}
@@ -85,27 +66,6 @@ const EditResume = () => {
 	)
 		
 }
-const Modal = styled.div`
-	padding: 1rem;
-	background-color: white;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
-	max-height: 400px;
-	overflow: scroll;
-`
-const BackDrop = styled.div`
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.6);
-`
 const EditSection = styled.div`
 	margin-top: 20px;
 	width: 90%;

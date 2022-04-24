@@ -69,7 +69,9 @@
         "editExperience": "Edit Experience",
         "editSkills": "Edit Skills",
         "back": "Back",
-        "saveResume": "Save your Resume"
+        "saveResume": "Save your Resume",
+        "editBtn": "Save Changes",
+        "logoutBtn": "Logout"
        
         
         
