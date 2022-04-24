@@ -17,8 +17,10 @@ const HeaderPart = () => {
 		contentUse = templatedataRu
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
-	} else if (resumeId) {
-		const currentItem = resumes.find((el) => el.id === resumeId)
+	} else if (resumes.length > 0) {
+		const currentItem =
+			resumes[resumes.length - 1] ||
+			resumes.find((el) => el.id === resumeId)
 		contentUse = currentItem.content
 	}
 

@@ -3,20 +3,24 @@ import { useInput } from '../../hooks/useInput'
 import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from '../Left/styles'
 import { useNavigate } from 'react-router-dom'
 
-const Education = () => {
+const EditEducation = () => {
 	const dispatch = useDispatch()
 	const educationContentInputs = useInput()
 	const navigate = useNavigate()
 
-	const { t } = useTranslation();
+	const { t } = useTranslation()
 
 	const submitEducationDataHandler = (e) => {
 		e.preventDefault()
-		
-		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
+
+		dispatch(
+			builderActions.addEducationContent(
+				educationContentInputs.inputValue,
+			),
+		)
 		educationContentInputs.onClear()
 	}
 
@@ -47,7 +51,8 @@ const Education = () => {
 				</div>
 
 				<div>
-					<StyledInput type='text'
+					<StyledInput
+						type='text'
 						name='address'
 						onChange={educationContentInputs.onChange}
 						value={educationContentInputs.inputValue.address}
@@ -59,7 +64,8 @@ const Education = () => {
 				</div>
 
 				<div>
-					<StyledInput type='text' 
+					<StyledInput
+						type='text'
 						name='major'
 						onChange={educationContentInputs.onChange}
 						value={educationContentInputs.inputValue.major}
@@ -68,11 +74,14 @@ const Education = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.education.graduationYear')}</StyledLabel>
+					<StyledLabel>
+						{t('left.education.graduationYear')}
+					</StyledLabel>
 				</div>
 
 				<div>
-					<StyledInput type='text' 
+					<StyledInput
+						type='text'
 						name='graduationYear'
 						onChange={educationContentInputs.onChange}
 						value={educationContentInputs.inputValue.graduationYear}
@@ -80,12 +89,15 @@ const Education = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.education.additionalIfno')}</StyledLabel>
+					<StyledLabel>
+						{t('left.education.additionalIfno')}
+					</StyledLabel>
 				</div>
 
 				<div>
-					<StyledInput type='text'
-						name='additionalInfo' 
+					<StyledInput
+						type='text'
+						name='additionalInfo'
 						onChange={educationContentInputs.onChange}
 						value={educationContentInputs.inputValue.additionalInfo}
 						onBlur={educationContentInputs.onBlur}
@@ -93,11 +105,12 @@ const Education = () => {
 				</div>
 
 				<StyledAddButton>{t('left.education.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>
+					Next
+				</StyledAddButton>
 			</StyledForm>
 		</>
 	)
 }
 
-
-export default Education
+export default EditEducation

@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from '../Left/styles'
 import styled from 'styled-components'
 
 import PhoneInput from 'react-phone-number-input'
@@ -10,7 +10,7 @@ import 'react-phone-number-input/style.css'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-const Header = () => {
+const EditHeader = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [phoneValue, setPhoneValue] = useState()
@@ -162,4 +162,4 @@ const StyledTextArea = styled.textarea`
 	}
 `
 
-export default Header
+export default EditHeader

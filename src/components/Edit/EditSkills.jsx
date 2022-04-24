@@ -5,11 +5,16 @@ import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
-import { StyledInput, StyledAddButton, StyledLabel, StyledForm, StyledSkills} from './styles'
+import {
+	StyledInput,
+	StyledAddButton,
+	StyledLabel,
+	StyledForm,
+	StyledSkills,
+} from '../Left/styles'
 import { useNavigate } from 'react-router-dom'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
-	
 	const valueToLower = value.toLowerCase()
 	return (
 		value.trim() !== '' &&
@@ -27,12 +32,12 @@ const SkillsContainer = ({ onClick, value, showSelect }) => {
 	)
 }
 
-const Skills = () => {
+const EditSkills = () => {
 	const dispatch = useDispatch()
 	const { skills } = useSelector((state) => state.builder.content)
 	const [skillValue, setSkillValue] = useState('')
 	const [showSelect, setShowSelect] = useState(true)
-	
+
 	const navigate = useNavigate()
 	const { t } = useTranslation()
 
@@ -53,7 +58,6 @@ const Skills = () => {
 		setShowSelect(true)
 		setSkillValue('')
 	}
-
 
 	const deleteSkillButtonHandler = (id) => {
 		dispatch(builderActions.deleteSkillButton(id))
@@ -104,7 +108,9 @@ const Skills = () => {
 					</section>
 				</div>
 				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>
+					Next
+				</StyledAddButton>
 			</StyledForm>
 		</StyledSkills>
 	)
@@ -136,5 +142,4 @@ const SkillsItem = styled.div`
 	}
 `
 
-
-export default Skills
+export default EditSkills

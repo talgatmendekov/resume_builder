@@ -6,10 +6,9 @@ import { useTranslation } from 'react-i18next'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
 import { useNavigate } from 'react-router-dom'
 
-
 const Experience = () => {
 	const dispatch = useDispatch()
-	
+
 	const experienceContentInputs = useInput()
 
 	const navigate = useNavigate()
@@ -18,14 +17,14 @@ const Experience = () => {
 		e.preventDefault()
 		if (experienceContentInputs.valueIsValid) {
 			dispatch(
-				builderActions.addExperienceContent(
-					experienceContentInputs.inputValue,
-				),
+				builderActions.addExperienceContent({
+					...experienceContentInputs.inputValue,
+					id: Date.now().toString(),
+				}),
 			)
 		}
-		
-		experienceContentInputs.onClear()
 
+		experienceContentInputs.onClear()
 	}
 
 	const navigateHandler = (e) => {
@@ -38,9 +37,10 @@ const Experience = () => {
 		<>
 			<h2>{t('left.experience.title')}</h2>
 			<StyledForm onSubmit={submitExperienceDataHandler}>
-				
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.name')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.name')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -53,7 +53,9 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.address')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.address')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -65,7 +67,9 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.position')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.position')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -78,7 +82,9 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.startDate')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.startDate')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -90,7 +96,9 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.endDate')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.endDate')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -103,7 +111,9 @@ const Experience = () => {
 				</div>
 
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.description')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -115,7 +125,9 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.description')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -127,7 +139,9 @@ const Experience = () => {
 					/>
 				</div>
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
+					<StyledLabel>
+						{t('left.experience.company1.description')}
+					</StyledLabel>
 				</div>
 
 				<div>
@@ -142,11 +156,12 @@ const Experience = () => {
 				<hr />
 
 				<StyledAddButton>{t('left.experience.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>{t('left.next')}</StyledAddButton>
+				<StyledAddButton onClick={navigateHandler}>
+					{t('left.next')}
+				</StyledAddButton>
 			</StyledForm>
 		</>
 	)
 }
-
 
 export default Experience
