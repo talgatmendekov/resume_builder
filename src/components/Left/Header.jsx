@@ -24,7 +24,8 @@ const Header = () => {
 		e.preventDefault()
 		dispatch(
 			builderActions.addHeaderContent({
-				headerContent: headerContentInputs.inputValue,
+				...headerContentInputs.inputValue,
+				id: Date.now().toString(),
 				phone: phoneValue,
 			}),
 		)

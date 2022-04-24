@@ -12,7 +12,8 @@ const EditExperience = () => {
 	const { resumes, resumeId } = useSelector((state) => state.save)
 	const [showEdit, setShowEdit] = useState(false)
 	const [idExperience, setIdExperience] = useState(null)
-	console.log(resumes, 'resumes')
+	const { t } = useTranslation()
+	
 
 	const currentResume =
 		resumes.find((resume) => resume.id === resumeId) ||
@@ -28,7 +29,7 @@ const EditExperience = () => {
 		e.preventDefault()
 		dispatch(
 			saveActions.editExperience({
-				values: experienceContentInputs.inputValue,
+				...experienceContentInputs.inputValue,
 				id: idExperience,	
 				resumeId: resumeId,  
 			}),
@@ -41,7 +42,7 @@ const EditExperience = () => {
 		e.preventDefault()
 		dispatch(saveActions.hideModal())
 	}
-	const { t } = useTranslation()
+	
 	 
 	const editExperienceHandler = (id) => {
 		setShowEdit(true)

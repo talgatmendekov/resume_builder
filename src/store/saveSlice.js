@@ -25,10 +25,23 @@ const saveSlice = createSlice({
 		hideModal: (state) => {
 			state.modal = false
 		},
+
+		editHeader: (state, action) => {
+			const headerId = action.payload.id
+			const headerValues = action.payload
+			const editedHeader = state.resumes.map(el => {
+				if(el.id === headerId) {
+					el.content.header = headerValues
+				}
+				return el
+			})
+			state.resumes = editedHeader
+		},
+
 		editExperience:(state, action) => {
 			const resumeId = action.payload.resumeId
 			const experienceId = action.payload.id
-			const experienceValues = action.payload.values
+			const experienceValues = action.payload
 			const editedExperience = state.resumes.map((el) => {
 				if (el.id === resumeId) {
 					el.content.experience = el.content.experience.map((el) => {
@@ -42,11 +55,12 @@ const saveSlice = createSlice({
 				return el
 			})
 			state.resumes = editedExperience
+			console.log(state, "state")
 		},
 		editEducation: (state, action) => {
 			const resumeId = action.payload.resumeId;
 			const eductionId = action.payload.id;
-			const educationValues = action.payload.values;
+			const educationValues = action.payload
 			const editedEducation = state.resumes.map((el) => {
 				if(el.id === resumeId) {
 					el.content.education = el.content.education.map((el) => {

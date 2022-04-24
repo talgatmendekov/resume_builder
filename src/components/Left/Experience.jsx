@@ -19,8 +19,9 @@ const Experience = () => {
 			dispatch(
 				builderActions.addExperienceContent({
 					...experienceContentInputs.inputValue,
-					id: Date.now().toString(),
-				}),
+					id: Date.now().toString()
+				}
+				),
 			)
 		}
 

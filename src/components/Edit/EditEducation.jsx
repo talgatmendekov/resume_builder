@@ -24,7 +24,7 @@ const EditEducation = () => {
 
 		dispatch(
 			saveActions.editEducation({
-				values: educationContentInputs.inputValue,
+				...educationContentInputs.inputValue,
 				id: idEducation,
 				resumeId,
 			})
@@ -48,7 +48,7 @@ const EditEducation = () => {
 				<Div>
 					{currentResume.content.education.map(el => (
 						<DivItem key={el.id}>
-							<Button onClick={()=> editEducationHandler(el.id)}>Изменить контент</Button>
+							<Button onClick={()=> editEducationHandler(el.id)}>Изменить {el.institution}</Button>
 						</DivItem>
 					))}
 				</Div>
@@ -64,7 +64,7 @@ const EditEducation = () => {
 						type='text'
 						name='institution'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.institution}
+						value={educationContentInputs.inputValue.institution || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -78,7 +78,7 @@ const EditEducation = () => {
 						type='text'
 						name='address'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.address}
+						value={educationContentInputs.inputValue.address || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -91,7 +91,7 @@ const EditEducation = () => {
 						type='text'
 						name='major'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.major}
+						value={educationContentInputs.inputValue.major || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -107,7 +107,7 @@ const EditEducation = () => {
 						type='text'
 						name='graduationYear'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.graduationYear}
+						value={educationContentInputs.inputValue.graduationYear || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -122,7 +122,7 @@ const EditEducation = () => {
 						type='text'
 						name='additionalInfo'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.additionalInfo}
+						value={educationContentInputs.inputValue.additionalInfo || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>

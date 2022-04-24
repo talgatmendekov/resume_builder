@@ -15,8 +15,7 @@ const builderSlice = createSlice({
 	initialState: initState,
 	reducers: {
 		addHeaderContent(state, action) {
-			const headerContent = action.payload.headerContent
-			console.log(action.payload, 'payload')
+			const headerContent = action.payload
 			const phone = action.payload.phone
 			state.content.header = headerContent
 			state.content.header.phone = phone
@@ -24,6 +23,7 @@ const builderSlice = createSlice({
 		addExperienceContent: (state, action) => {
 			const experienceContent = action.payload
 			state.content.experience.push(experienceContent)
+			
 		},
 		addEducationContent: (state, action) => {
 			const educationContent = action.payload

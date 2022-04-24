@@ -8,7 +8,8 @@ import { templatedata, templatedataRu } from '../../../utils/fake_data'
 const ExperiencePart = () => {
 	const { content, control } = useSelector((state) => state.builder)
 	const { resumes, resumeId } = useSelector((state) => state.save)
-	console.log(resumeId, "resumeID");
+
+	
 	//if the 'control' is TRUE - use 'Fake state' to show the preview of the template
 
 	const { t, i18n } = useTranslation()
