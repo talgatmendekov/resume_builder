@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import logo from '../assets/icons/logo.svg'
 import Button from './UI/Button'
@@ -8,11 +8,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../store/saveSlice'
 import EditResume from './editResume/EditResume'
 
+
 const Finalize = () => {
 	const dispatch = useDispatch()
 	const resumeContent = useSelector((state) => state.builder)
 	const { resumes } = useSelector((state) => state.save)
-	console.log(resumes)
+
 	const navigate = useNavigate()
 
 	const { t } = useTranslation()
@@ -58,7 +59,7 @@ const Finalize = () => {
 				</div>
 				{resumes.length > 0 && (
 					<EditSection>
-						<h2>Saved Resumes</h2>
+						<h2>{t('left.savedResumes')}</h2>
 						{resumes.map((resume) => (
 							<ResumeStyled
 								onClick={() => selectResumeHandler(resume.id)}
@@ -70,6 +71,7 @@ const Finalize = () => {
 					</EditSection>
 				)}
 			</StyledBasic>
+			
 		</>
 	)
 }

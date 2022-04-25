@@ -102,3 +102,13 @@ export const StyledSkills = styled.div`
 		}
 	}
 `
+export const Div = styled.div`
+	width: 90%;
+	padding: 1rem;
+`
+export const DivItem = styled.div`
+	.editBtn{
+		padding: 0.5rem;
+		width: 250px;
+	}
+`

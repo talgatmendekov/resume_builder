@@ -15,7 +15,6 @@ const saveSlice = createSlice({
 			state.resumes.push(resumeContent)
 		},
 		resumeId: (state, action) => {
-			console.log(action.payload, 'resumeID')
 			state.resumeId =
 				action.payload 
 		},
@@ -59,12 +58,12 @@ const saveSlice = createSlice({
 		},
 		editEducation: (state, action) => {
 			const resumeId = action.payload.resumeId;
-			const eductionId = action.payload.id;
+			const educationId = action.payload.id;
 			const educationValues = action.payload
 			const editedEducation = state.resumes.map((el) => {
 				if(el.id === resumeId) {
 					el.content.education = el.content.education.map((el) => {
-						if(el.id === eductionId) {
+						if(el.id === educationId) {
 							el = educationValues
 						}
 						return el
@@ -73,7 +72,36 @@ const saveSlice = createSlice({
 				return el
 			})
 			state.resumes = editedEducation;
-		}
+		},
+
+		editSkills: (state, action) => {
+			const resumeId = action.payload.resumeId
+			const skillId = action.payload.id
+			const skillValue = action.payload
+			const editedSkills = state.resumes.map(el => {
+				if (el.id === resumeId) {
+					el.content.skills = el.content.skills.map((el) => {
+						if (el.id === skillId){
+							el = skillValue
+						}
+						return el
+					})
+				}
+				return el
+			})
+			state.resumes = editedSkills
+		},
+		deleteSkillButton: (state, action) => {
+			
+			const deletedSkillButton = state.resumes.map((el) => {
+				if(el.id === action.payload.resumeId) {
+					el.content.skills = el.content.skills.filter((el) => el.id !== action.payload.id)
+					
+				}
+				return el
+			})
+			state.resumes = deletedSkillButton
+		},
 	},
 })
 

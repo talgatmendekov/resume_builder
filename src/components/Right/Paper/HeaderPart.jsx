@@ -2,12 +2,13 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import styled from 'styled-components'
+import styled, {createGlobalStyle} from 'styled-components'
 import { templatedata, templatedataRu } from '../../../utils/fake_data'
 
 const HeaderPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
 	const { resumes, resumeId } = useSelector((state) => state.save)
+	const {color} = useSelector(state => state.builder)
 
 	const { i18n } = useTranslation()
 
@@ -31,6 +32,7 @@ const HeaderPart = () => {
 		divider = ''
 	}
 	return (
+		
 		<StyledHeaderPart>
 			<div className='contentHeader'>
 				<h1>{contentUse.header.fullName}</h1>
@@ -49,6 +51,7 @@ const HeaderPart = () => {
 				{divider}
 			</div>
 		</StyledHeaderPart>
+		
 	)
 }
 
@@ -63,6 +66,11 @@ const StyledHeaderPart = styled.div`
 	}
 	h1 {
 		text-transform: uppercase;
+	}
+`
+const GlobalStyle = createGlobalStyle`
+	h2, h1 {
+		color: ${props => props.color || '#464746'}
 	}
 `
 export default HeaderPart

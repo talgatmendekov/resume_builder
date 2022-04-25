@@ -71,7 +71,10 @@
         "back": "Back",
         "saveResume": "Save your Resume",
         "editBtn": "Save Changes",
-        "logoutBtn": "Logout"
+        "logoutBtn": "Logout",
+        "savedResumes": "Saved Resumes",
+        "editResumes": "Resume edit section"
+
        
         
         

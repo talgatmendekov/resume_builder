@@ -28,8 +28,7 @@ const EditResume = () => {
 		<>
 		{resumes.length > 0 && (
 			<EditSection>
-				<h2>Resume edit section</h2>
-			{/* {modal && <BackDrop />} */}
+				<h2>{t('left.editResumes')}</h2>
 			{modal && <Modal>{showEdit}</Modal>}
 			<Button
 				onClick={() => editHandler(<EditHeader />)}

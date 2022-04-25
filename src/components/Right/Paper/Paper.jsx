@@ -9,20 +9,25 @@ import styled from 'styled-components'
 
 const Paper = () => {
 	const resumeData = useSelector((state) => state.builder.content)
+	
 
 	useEffect(() => {
 		setToLocaleStorage('@resumeData', resumeData)
 	}, [resumeData])
 
 	return (
+		
 		<StyledPaper>
+			
 			<div size='A4' className='page'>
 				<HeaderPart />
 				<ExperiencePart />
 				<EducationPart />
 				<SkillsPart />
 			</div>
+			
 		</StyledPaper>
+		
 	)
 }
 
@@ -30,4 +35,5 @@ const StyledPaper = styled.div`
 	
 	
 `
+
 export default Paper

@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useInput } from '../../hooks/useInput'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import {  StyledInput, StyledAddButton, StyledLabel, StyledForm } from '../Left/styles'
-import styled from 'styled-components'
+import {  StyledInput, StyledAddButton, StyledLabel, StyledForm, Div, DivItem } from '../Left/styles'
 import { saveActions } from '../../store/saveSlice'
 import Button from '../UI/Button'
 
@@ -201,15 +200,6 @@ const EditExperience = () => {
 		</>
 	)
 }
-const Div = styled.div`
-	width: 90%;
-	padding: 1rem;
-`
-const DivItem = styled.div`
-	.editBtn{
-		padding: 0.5rem;
-		width: 250px;
-	}
-`
+
 
 export default EditExperience

@@ -1,18 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { builderActions } from '../../store/builderSlice'
 import { useTranslation } from 'react-i18next'
 import { SKILLSECTION } from '../../utils/helpers/constants'
 import { MdClose } from 'react-icons/md'
-import {
-	StyledInput,
-	StyledAddButton,
-	StyledLabel,
-	StyledForm,
-	StyledSkills,
-} from '../Left/styles'
-import { useNavigate } from 'react-router-dom'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm, StyledSkills, Div, DivItem } from '../Left/styles'
+import { saveActions } from '../../store/saveSlice'
+import Button from '../UI/Button'
 
 const SkillsContainer = ({ onClick, value, showSelect }) => {
 	const valueToLower = value.toLowerCase()
@@ -35,11 +29,16 @@ const SkillsContainer = ({ onClick, value, showSelect }) => {
 const EditSkills = () => {
 	const dispatch = useDispatch()
 	const { skills } = useSelector((state) => state.builder.content)
+	const {resumes, resumeId} = useSelector(state => state.save)
+	const [showEdit, setShowEdit] = useState(false)
+	const [idSkills, setIdSkills] = useState(null)
 	const [skillValue, setSkillValue] = useState('')
 	const [showSelect, setShowSelect] = useState(true)
 
-	const navigate = useNavigate()
+	
 	const { t } = useTranslation()
+
+	const currentResume = resumes.find(resume => resume.id === resumeId) || resumes[resumes.length -1]
 
 	const skillsInputChangeHandler = (e) => {
 		setSkillValue(e.target.value)
@@ -48,19 +47,23 @@ const EditSkills = () => {
 	const addSkillHandler = (e) => {
 		e.preventDefault()
 		if (skillValue.trim().length > 0) {
-			dispatch(
-				builderActions.addSkillsContent({
-					skillValue,
-					id: new Date().toString(),
-				}),
-			)
+			dispatch(saveActions.editSkills({
+				skillValue: skillValue,
+				id: idSkills,
+				resumeId,
+				
+
+			}))
 		}
 		setShowSelect(true)
 		setSkillValue('')
 	}
 
 	const deleteSkillButtonHandler = (id) => {
-		dispatch(builderActions.deleteSkillButton(id))
+		dispatch(saveActions.deleteSkillButton({
+			id: id,
+			resumeId,
+		}))
 	}
 	const skillOption = skills.map((skill) => (
 		<li key={skill.id}>
@@ -76,15 +79,31 @@ const EditSkills = () => {
 	const selectSkillsHandler = (skill) => {
 		setSkillValue(skill)
 		setShowSelect(false)
+	};
+
+	const hideModalHandler = (e) => {
+		e.preventDefault()
+		dispatch(saveActions.hideModal())
 	}
 
-	const navigateHandler = (e) => {
-		e.preventDefault()
-		navigate('/finalize')
+	const editSkillsHandler = (id) => {
+		setShowEdit(true)
+		setIdSkills(id)
+		dispatch(saveActions.resumeId(currentResume.id))
+		
 	}
 	return (
 		<StyledSkills>
 			<h2>{t('left.skills.title')}</h2>
+			{!showEdit && (
+				<Div>
+					{currentResume.content.skills.map(el => (
+						<DivItem key={el.id}>
+							<Button className='editBtn' onClick={() => editSkillsHandler(el.id)}></Button>
+						</DivItem>
+					))}
+				</Div>
+			)}
 			<StyledForm onSubmit={addSkillHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.skills.section')}</StyledLabel>
@@ -107,9 +126,9 @@ const EditSkills = () => {
 						<ul>{skillOption}</ul>
 					</section>
 				</div>
-				<StyledAddButton>{t('left.skills.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>
-					Next
+				<StyledAddButton>{t('left.editBtn')}</StyledAddButton>
+				<StyledAddButton onClick={hideModalHandler}>
+				{t('left.logoutBtn')}
 				</StyledAddButton>
 			</StyledForm>
 		</StyledSkills>

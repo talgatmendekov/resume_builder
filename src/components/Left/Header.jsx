@@ -5,12 +5,10 @@ import { builderActions } from '../../store/builderSlice'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
-
-import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber } from 'react-phone-number-input'
+import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { useNavigate } from 'react-router-dom'
-import ru from '../../language/telRu.json'
-import en from '../../language/telEn.json'
+
 
 const Header = () => {
 

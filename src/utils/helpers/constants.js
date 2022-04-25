@@ -82,3 +82,19 @@ export const SKILLSECTION = [
     'Subject Matter Experts (SMEs)',
     'Technical Documentation',
 ]
+
+export const COLORS = [
+    '#000000',
+    '#436975',
+    '#305fec',
+    '#0e9fc1',
+    '#7ebca3',
+    '#acb75a',
+    '#9097be',
+    '#ac7bae',
+    '#f46464',
+    '#96006f',
+    '#c5a3ab',
+    '#d39c00',
+ ]
+ 
