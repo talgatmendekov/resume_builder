@@ -49,7 +49,7 @@ const EditHeader = () => {
 			{!showEdit && (
 				<Div>
 				<DivItem>
-					<Button onClick={() => editHeaderHandler(currentResume.id)}>Изменить контент</Button>
+					<StyledAddButton onClick={() => editHeaderHandler(currentResume.id)}>Изменить контент</StyledAddButton>
 				</DivItem>
 			</Div>
 			)}

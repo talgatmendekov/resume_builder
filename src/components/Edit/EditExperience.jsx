@@ -57,7 +57,7 @@ const EditExperience = () => {
 					{currentResume.content.experience.map((el) => (
 						<DivItem key={el.id}>
 							
-							<Button className='editBtn' onClick={() => editExperienceHandler(el.id)}>Изменить контент</Button>
+							<StyledAddButton className='editBtn' onClick={() => editExperienceHandler(el.id)}>Изменить {el.company}</StyledAddButton>
 						</DivItem>
 					))}
 				</Div>
