@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import logo from '../assets/icons/logo.svg'
 import Button from './UI/Button'
@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../store/saveSlice'
 import EditResume from './editResume/EditResume'
-
+import { setToLocaleStorage } from '../utils/helpers/general'
+// import ChangeColor from './Edit/changeColor'
 
 const Finalize = () => {
 	const dispatch = useDispatch()
@@ -30,6 +31,9 @@ const Finalize = () => {
 			}),
 		)
 	}
+	useEffect(() => {
+		setToLocaleStorage('allResumes', resumes)
+	}, [resumes])
 	const selectResumeHandler = (id) => {
 		dispatch(saveActions.resumeId(id))
 	}
@@ -70,8 +74,8 @@ const Finalize = () => {
 						))}
 					</EditSection>
 				)}
+				{/* <ChangeColor/> */}
 			</StyledBasic>
-			
 		</>
 	)
 }
@@ -132,14 +136,14 @@ const ResumeStyled = styled.div`
 	}
 `
 const StyledBasic = styled.div`
-  background-color: #f5ecec;
+	background-color: #f5ecec;
 	box-shadow: 0 0 0.5cm #7b7d7d;
 	width: 490px;
-	
+
 	.headerLeft {
 		display: flex;
 		justify-content: space-between;
-		div{
+		div {
 			margin-top: 1rem;
 		}
 
@@ -161,7 +165,6 @@ const StyledBasic = styled.div`
 			font-weight: 700;
 			margin-right: 20px;
 			border-radius: 3px;
-			
 		}
 	}
 	.topLeft {
@@ -169,18 +172,18 @@ const StyledBasic = styled.div`
 		padding: 1rem;
 		text-align: center;
 		justify-content: space-evenly;
-	
 
-	hr {
-		width: 90%;
-		border: 0;
-		height: 0;
-		border-top: 1px solid rgba(0, 0, 0, 0.1);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-		padding-top: 20px;
+		hr {
+			width: 90%;
+			border: 0;
+			height: 0;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			padding-top: 20px;
+		}
+		.formSection {
+			margin: 25px;
+		}
 	}
-	.formSection {
-		margin: 25px;
-	}}
 `
 export default Finalize

@@ -47,7 +47,7 @@ const EditEducation = () => {
 				<Div>
 					{currentResume.content.education.map(el => (
 						<DivItem key={el.id}>
-							<Button onClick={()=> editEducationHandler(el.id)}>Изменить {el.institution}</Button>
+							<StyledAddButton onClick={()=> editEducationHandler(el.id)}>Изменить {el.institution}</StyledAddButton>
 						</DivItem>
 					))}
 				</Div>

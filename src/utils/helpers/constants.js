@@ -84,10 +84,11 @@ export const SKILLSECTION = [
 ]
 
 export const COLORS = [
+    '#FF3766',
     '#000000',
-    '#436975',
-    '#305fec',
-    '#0e9fc1',
+    '#D0FF00',
+    '#3AE2CE',
+    '#00FFA9',
     '#7ebca3',
     '#acb75a',
     '#9097be',
@@ -96,5 +97,7 @@ export const COLORS = [
     '#96006f',
     '#c5a3ab',
     '#d39c00',
+    '#781EFF'
  ]
+ 
  

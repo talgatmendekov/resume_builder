@@ -99,7 +99,7 @@ const EditSkills = () => {
 				<Div>
 					{currentResume.content.skills.map(el => (
 						<DivItem key={el.id}>
-							<Button className='editBtn' onClick={() => editSkillsHandler(el.id)}></Button>
+							<StyledAddButton className='editBtn' onClick={() => editSkillsHandler(el.id)}>{el.skillValue}</StyledAddButton>
 						</DivItem>
 					))}
 				</Div>
@@ -159,6 +159,7 @@ const SkillsItem = styled.div`
 		background-color: rgba(0, 0, 0, 0.8);
 		color: white;
 	}
+	
 `
 
 export default EditSkills

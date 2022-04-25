@@ -35,6 +35,7 @@ export const StyledAddButton = styled.button`
 	:active {
 		box-shadow: 0 0 0;
 	}
+	
 `
 export const StyledLabel = styled.label`
 	transform: translate(10px, -8px) scale(0.75);
@@ -100,6 +101,11 @@ export const StyledSkills = styled.div`
 		.deleteIcon {
 			opacity: 0;
 		}
+		
+		.editBtn {
+		margin-bottom: 1.5rem;
+		color: #817777;
+	}
 	}
 `
 export const Div = styled.div`

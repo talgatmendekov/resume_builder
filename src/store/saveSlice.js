@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initState = {
-	resumes: [],
+	resumes: JSON.parse(localStorage.getItem('allResumes')) || [],
 	resumeId: null,
 	modal: false,
 }

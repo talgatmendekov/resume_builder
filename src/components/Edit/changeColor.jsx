@@ -6,18 +6,17 @@ import { builderActions } from '../../store/builderSlice'
 
 const ChangeColor = () => {
 
-  const fontColor = useSelector(state => state.builder)
+  const {color} = useSelector(state => state.builder)
   const dispatch = useDispatch()
 
-  const changeColorHandler = (color) => {
+  const changeFontColorHandler = (color) => {
     dispatch(builderActions.changeFontColor(color))
   }
   return (
     <ColorPalette>
-    <h2>Choose color</h2>
+    <h2>Select color</h2>
     {COLORS.map(color => (
-    <ColorItem onClick ={() => changeColorHandler(color)}
-      isColor = {color === fontColor}
+    <ColorPick onClick ={() => changeFontColorHandler(color)}
       key={color}
       color = {color}
         />
@@ -27,23 +26,20 @@ const ChangeColor = () => {
 }
 
 const ColorPalette = styled.div`
-width: 120px;
-padding: 0.3rem;
-background-color: whitesmoke;
-border-radius: 4px;
-margin-top: 30px;
+width: 30%;
+padding: 0.5rem;
+border-radius: 0.5rem;
+background-color: #dfdbdbab;
 `
 
-const ColorItem = styled.button`
+const ColorPick = styled.button`
+   width: 3rem;
+   height: 3rem;
    border: none;
-   width: 50px;
-   height: 50px;
-   transition: 0.2s;
    background-color: ${(props) => props.color};
-   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
    cursor: pointer;
    &:hover {
-      opacity: 0.7;
+      opacity: 0.8;
    }
    `
 export default ChangeColor
