@@ -9,7 +9,6 @@ const EducationPart = () => {
 	const { content, control } = useSelector((state) => state.builder)
 	const { resumes, resumeId } = useSelector((state) => state.save)
 
-
 	const { t, i18n } = useTranslation()
 
 	let contentUse = content
@@ -18,8 +17,10 @@ const EducationPart = () => {
 		contentUse = templatedataRu
 	} else if (control && i18n.resolvedLanguage === 'en') {
 		contentUse = templatedata
-	} else if (resumeId) {
-		const currentItem = resumes.find((el) => el.id === resumeId)
+	} else if (resumes.length > 0) {
+		const currentItem =
+			resumes[resumes.length - 1] ||
+			resumes.find((el) => el.id === resumeId)
 		contentUse = currentItem.content
 	}
 

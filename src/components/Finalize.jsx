@@ -3,16 +3,17 @@ import styled from 'styled-components'
 import logo from '../assets/icons/logo.svg'
 import Button from './UI/Button'
 import { useNavigate } from 'react-router-dom'
-import { MdEdit } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../store/saveSlice'
+import EditResume from './editResume/EditResume'
+
 
 const Finalize = () => {
 	const dispatch = useDispatch()
 	const resumeContent = useSelector((state) => state.builder)
 	const { resumes } = useSelector((state) => state.save)
-	console.log(resumes)
+
 	const navigate = useNavigate()
 
 	const { t } = useTranslation()
@@ -54,35 +55,23 @@ const Finalize = () => {
 				</div>
 				<hr />
 				<div className='formSection'>
-					<EditSection>
-						<Button className='editBtn'>
-							{t('left.editHeader')} <MdEdit />
-						</Button>
-						<Button className='editBtn'>
-							{t('left.editExperience')}
-							<MdEdit />
-						</Button>
-						<Button className='editBtn'>
-							{t('left.editEducation')}
-							<MdEdit />
-						</Button>
-						<Button className='editBtn'>
-							{t('left.editSkills')}
-							<MdEdit />
-						</Button>
-					</EditSection>
+					<EditResume />
 				</div>
-				<EditSection>
-					{resumes.map((resume) => (
-						<ResumeStyled
-							onClick={() => selectResumeHandler(resume.id)}
-							key={resume.id}
-						>
-							{resume.content.header.fullName}
-						</ResumeStyled>
-					))}
-				</EditSection>
+				{resumes.length > 0 && (
+					<EditSection>
+						<h2>{t('left.savedResumes')}</h2>
+						{resumes.map((resume) => (
+							<ResumeStyled
+								onClick={() => selectResumeHandler(resume.id)}
+								key={resume.id}
+							>
+								{resume.content.header.fullName}
+							</ResumeStyled>
+						))}
+					</EditSection>
+				)}
 			</StyledBasic>
+			
 		</>
 	)
 }
@@ -192,6 +181,6 @@ const StyledBasic = styled.div`
 	}
 	.formSection {
 		margin: 25px;
-	}
+	}}
 `
 export default Finalize

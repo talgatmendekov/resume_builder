@@ -1,33 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useInput } from '../../hooks/useInput'
-import { useDispatch } from 'react-redux'
-import { builderActions } from '../../store/builderSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
-import { useNavigate } from 'react-router-dom'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm, Div, DivItem } from '../Left/styles'
+import { saveActions } from '../../store/saveSlice'
+import Button from '../UI/Button'
 
-const Education = () => {
+
+const EditEducation = () => {
 	const dispatch = useDispatch()
+	const {resumes, resumeId} = useSelector(state => state.save)
+	const [showEdit, setShowEdit] = useState(false)
+	const [idEducation, setIdEducation] = useState(null)
 	const educationContentInputs = useInput()
-	const navigate = useNavigate()
+	const { t } = useTranslation()
 
-	const { t } = useTranslation();
+	const currentResume = resumes.find(resume => resume.id === resumeId) ||resumes[resumes.length -1]
+
 
 	const submitEducationDataHandler = (e) => {
 		e.preventDefault()
-		
-		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
+
+		dispatch(
+			saveActions.editEducation({
+				...educationContentInputs.inputValue,
+				id: idEducation,
+				resumeId,
+			})
+		)
 		educationContentInputs.onClear()
 	}
 
-	const navigateHandler = (e) => {
+	const hideModalHandler = (e) => {
 		e.preventDefault()
-		navigate('/basic/skills')
+		dispatch(saveActions.hideModal())
+	}
+	const editEducationHandler = (id) => {
+		setShowEdit(true)
+		setIdEducation(id)
+		dispatch(saveActions.resumeId(currentResume.id))
 	}
 	return (
 		<>
 			<h2>{t('left.education.title')}</h2>
-			<StyledForm onSubmit={submitEducationDataHandler}>
+			{!showEdit && (
+				<Div>
+					{currentResume.content.education.map(el => (
+						<DivItem key={el.id}>
+							<Button onClick={()=> editEducationHandler(el.id)}>Изменить {el.institution}</Button>
+						</DivItem>
+					))}
+				</Div>
+			)}
+			{showEdit && (
+				<StyledForm onSubmit={submitEducationDataHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.education.institution')}</StyledLabel>
 				</div>
@@ -37,7 +63,7 @@ const Education = () => {
 						type='text'
 						name='institution'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.institution}
+						value={educationContentInputs.inputValue.institution || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -47,10 +73,11 @@ const Education = () => {
 				</div>
 
 				<div>
-					<StyledInput type='text'
+					<StyledInput
+						type='text'
 						name='address'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.address}
+						value={educationContentInputs.inputValue.address || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -59,45 +86,56 @@ const Education = () => {
 				</div>
 
 				<div>
-					<StyledInput type='text' 
+					<StyledInput
+						type='text'
 						name='major'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.major}
+						value={educationContentInputs.inputValue.major || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
 
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.education.graduationYear')}</StyledLabel>
+					<StyledLabel>
+						{t('left.education.graduationYear')}
+					</StyledLabel>
 				</div>
 
 				<div>
-					<StyledInput type='text' 
+					<StyledInput
+						type='text'
 						name='graduationYear'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.graduationYear}
+						value={educationContentInputs.inputValue.graduationYear || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
 				<div className='formControl-root'>
-					<StyledLabel>{t('left.education.additionalIfno')}</StyledLabel>
+					<StyledLabel>
+						{t('left.education.additionalIfno')}
+					</StyledLabel>
 				</div>
 
 				<div>
-					<StyledInput type='text'
-						name='additionalInfo' 
+					<StyledInput
+						type='text'
+						name='additionalInfo'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.additionalInfo}
+						value={educationContentInputs.inputValue.additionalInfo || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
 
-				<StyledAddButton>{t('left.education.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
+				<StyledAddButton>{t('left.editBtn')}</StyledAddButton>
+				<StyledAddButton onClick={hideModalHandler}>
+				{t('left.logoutBtn')}
+				</StyledAddButton>
 			</StyledForm>
+			)}
+			
 		</>
 	)
 }
 
 
-export default Education
+export default EditEducation

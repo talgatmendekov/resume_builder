@@ -16,7 +16,10 @@ const Education = () => {
 	const submitEducationDataHandler = (e) => {
 		e.preventDefault()
 		
-		dispatch(builderActions.addEducationContent(educationContentInputs.inputValue))
+		dispatch(builderActions.addEducationContent({
+			...educationContentInputs.inputValue,
+			id: Date.now().toString()
+		}))
 		educationContentInputs.onClear()
 	}
 

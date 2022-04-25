@@ -1,38 +1,60 @@
-import { useDispatch } from 'react-redux'
-import { builderActions } from '../../store/builderSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import { useInput } from '../../hooks/useInput'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
+import { StyledInput, StyledAddButton, StyledLabel, StyledForm, Div, DivItem } from '../Left/styles'
 import styled from 'styled-components'
-
 import PhoneInput from 'react-phone-number-input'
-import 'react-phone-number-input/style.css'
-import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { saveActions } from '../../store/saveSlice'
+import Button from '../UI/Button'
 
-const Header = () => {
-	const navigate = useNavigate()
+const EditHeader = () => {
 	const dispatch = useDispatch()
+	const {resumes, resumeId} = useSelector(state => state.save)
+	const [showEdit, setShowEdit] = useState(false)
+	const [idHeader, setIdHeader] = useState(null)
 	const [phoneValue, setPhoneValue] = useState()
+
 	const headerContentInputs = useInput()
 	const { t } = useTranslation()
 
+
+	const currentResume = resumes.find(resume => resume.id === resumeId) || resumes[resumes.length -1]
+
 	const submitHeaderContentHandler = (e) => {
 		e.preventDefault()
-		dispatch(
-			builderActions.addHeaderContent({
-				headerContent: headerContentInputs.inputValue,
-				phone: phoneValue,
-			}),
-		)
-		navigate('/basic/experience')
+		dispatch(saveActions.editHeader({
+			...headerContentInputs.inputValue,
+			id: idHeader,
+			resumeId: resumeId
+		}))
+		headerContentInputs.onClear()
+	};
+
+	const hideModalHandler = (e) => {
+		e.preventDefault()
+		dispatch(saveActions.hideModal())
+	};
+
+	const editHeaderHandler = (id) => {
+		setShowEdit(true)
+		setIdHeader(id)
+		dispatch(saveActions.resumeId(currentResume.id))
 	}
-	console.log(phoneValue)
+	
 
 	return (
 		<>
 			<h2>{t('left.header.title')}</h2>
-			<StyledForm onSubmit={submitHeaderContentHandler}>
+			{!showEdit && (
+				<Div>
+				<DivItem>
+					<Button onClick={() => editHeaderHandler(currentResume.id)}>Изменить контент</Button>
+				</DivItem>
+			</Div>
+			)}
+			{showEdit && (
+				<StyledForm onSubmit={submitHeaderContentHandler}>
 				<div className='formControl-root'>
 					<StyledLabel>{t('left.header.fullName')}</StyledLabel>
 				</div>
@@ -142,8 +164,11 @@ const Header = () => {
 						onBlur={headerContentInputs.onBlur}
 					/>
 				</div>
-				<StyledAddButton>{t('left.header.addBtn')}</StyledAddButton>
+				<StyledAddButton>{t('left.editBtn')}</StyledAddButton>
+				<StyledAddButton onClick={hideModalHandler}>{t('left.logoutBtn')}</StyledAddButton>
 			</StyledForm>
+			)}
+			
 		</>
 	)
 }
@@ -161,5 +186,4 @@ const StyledTextArea = styled.textarea`
 		border: 1px solid red;
 	}
 `
-
-export default Header
+export default EditHeader

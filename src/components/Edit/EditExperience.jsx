@@ -1,152 +1,205 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useInput } from '../../hooks/useInput'
-import { useDispatch } from 'react-redux'
-import { builderActions } from '../../store/builderSlice'
+import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import { StyledInput, StyledAddButton, StyledLabel, StyledForm } from './styles'
-import { useNavigate } from 'react-router-dom'
+import {  StyledInput, StyledAddButton, StyledLabel, StyledForm, Div, DivItem } from '../Left/styles'
+import { saveActions } from '../../store/saveSlice'
+import Button from '../UI/Button'
 
-
-const Experience = () => {
+const EditExperience = () => {
 	const dispatch = useDispatch()
+	const { resumes, resumeId } = useSelector((state) => state.save)
+	const [showEdit, setShowEdit] = useState(false)
+	const [idExperience, setIdExperience] = useState(null)
+	const { t } = useTranslation()
 	
+
+	const currentResume =
+		resumes.find((resume) => resume.id === resumeId) ||
+		resumes[resumes.length - 1]
+
 	const experienceContentInputs = useInput()
 
-	const navigate = useNavigate()
+
+
+	
 
 	const submitExperienceDataHandler = (e) => {
 		e.preventDefault()
-		if (experienceContentInputs.valueIsValid) {
-			dispatch(
-				builderActions.addExperienceContent(
-					experienceContentInputs.inputValue,
-				),
-			)
-		}
-		
+		dispatch(
+			saveActions.editExperience({
+				...experienceContentInputs.inputValue,
+				id: idExperience,	
+				resumeId: resumeId,  
+			}),
+		)
+
 		experienceContentInputs.onClear()
-
 	}
 
-	const navigateHandler = (e) => {
+	const hideModalHandler = (e) => {
 		e.preventDefault()
-		navigate('/basic/education')
+		dispatch(saveActions.hideModal())
 	}
-	const { t } = useTranslation()
-
+	
+	 
+	const editExperienceHandler = (id) => {
+		setShowEdit(true)
+		setIdExperience(id)
+		dispatch(saveActions.resumeId(currentResume.id))
+		
+	}
 	return (
 		<>
 			<h2>{t('left.experience.title')}</h2>
-			<StyledForm onSubmit={submitExperienceDataHandler}>
-				
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.name')}</StyledLabel>
-				</div>
+			{!showEdit && (
+				<Div>
+					{currentResume.content.experience.map((el) => (
+						<DivItem key={el.id}>
+							
+							<Button className='editBtn' onClick={() => editExperienceHandler(el.id)}>Изменить контент</Button>
+						</DivItem>
+					))}
+				</Div>
+			)}
 
-				<div>
-					<StyledInput
-						name='company'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.company}
-					/>
-				</div>
+			{showEdit && (
+				<StyledForm onSubmit={submitExperienceDataHandler}>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.name')}
+						</StyledLabel>
+					</div>
 
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.address')}</StyledLabel>
-				</div>
+					<div>
+						<StyledInput
+							name='company'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={experienceContentInputs.inputValue.company || ''}
+						/>
+					</div>
 
-				<div>
-					<StyledInput
-						name='address'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.address}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.position')}</StyledLabel>
-				</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.address')}
+						</StyledLabel>
+					</div>
 
-				<div>
-					<StyledInput
-						name='position'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.position}
-					/>
-				</div>
+					<div>
+						<StyledInput
+							name='address'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={experienceContentInputs.inputValue.address|| ''}
+						/>
+					</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.position')}
+						</StyledLabel>
+					</div>
 
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.startDate')}</StyledLabel>
-				</div>
+					<div>
+						<StyledInput
+							name='position'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={experienceContentInputs.inputValue.position || ''}
+						/>
+					</div>
 
-				<div>
-					<StyledInput
-						name='startDate'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.startDate}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.endDate')}</StyledLabel>
-				</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.startDate')}
+						</StyledLabel>
+					</div>
 
-				<div>
-					<StyledInput
-						name='endDate'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.endDate}
-					/>
-				</div>
+					<div>
+						<StyledInput
+							name='startDate'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={experienceContentInputs.inputValue.startDate || ''}
+						/>
+					</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.endDate')}
+						</StyledLabel>
+					</div>
 
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
-				</div>
+					<div>
+						<StyledInput
+							name='endDate'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={experienceContentInputs.inputValue.endDate || ''}
+						/>
+					</div>
 
-				<div>
-					<StyledInput
-						name='description1'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.description1}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
-				</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.description')}
+						</StyledLabel>
+					</div>
 
-				<div>
-					<StyledInput
-						name='description2'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.description2}
-					/>
-				</div>
-				<div className='formControl-root'>
-					<StyledLabel>{t('left.experience.company1.description')}</StyledLabel>
-				</div>
+					<div>
+						<StyledInput
+							name='description1'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={
+								experienceContentInputs.inputValue.description1 || ''
+							}
+						/>
+					</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.description')}
+						</StyledLabel>
+					</div>
 
-				<div>
-					<StyledInput
-						name='description3'
-						type='text'
-						onChange={experienceContentInputs.onChange}
-						value={experienceContentInputs.inputValue.description3}
-					/>
-				</div>
+					<div>
+						<StyledInput
+							name='description2'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={
+								experienceContentInputs.inputValue.description2 || ''
+							}
+						/>
+					</div>
+					<div className='formControl-root'>
+						<StyledLabel>
+							{t('left.experience.company1.description')}
+						</StyledLabel>
+					</div>
 
-				<hr />
+					<div>
+						<StyledInput
+							name='description3'
+							type='text'
+							onChange={experienceContentInputs.onChange}
+							value={
+								experienceContentInputs.inputValue.description3 || ''
+							}
+						/>
+					</div>
 
-				<StyledAddButton>{t('left.experience.addBtn')}</StyledAddButton>
-				<StyledAddButton onClick={navigateHandler}>Next</StyledAddButton>
-			</StyledForm>
+					<hr />
+
+					<StyledAddButton className='edit'>
+						{t('left.editBtn')}
+					</StyledAddButton>
+					<StyledAddButton onClick={hideModalHandler}>
+						{t('left.logoutBtn')}
+					</StyledAddButton>
+				</StyledForm>
+			)}
 		</>
 	)
 }
 
 
-export default Experience
+export default EditExperience

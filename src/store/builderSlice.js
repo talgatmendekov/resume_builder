@@ -7,16 +7,18 @@ const initState = {
 		education: [],
 		skills: [],
 	},
-
+	color: '#464746',
 	control: false,
 }
 const builderSlice = createSlice({
 	name: 'builder',
 	initialState: initState,
 	reducers: {
-		addHeaderContent(state, action) {
-			const headerContent = action.payload.headerContent
-			console.log(action.payload, 'payload')
+		changeFontColor:(state, action) => {
+			state.color = action.payload
+		},
+		addHeaderContent:(state, action) => {
+			const headerContent = action.payload
 			const phone = action.payload.phone
 			state.content.header = headerContent
 			state.content.header.phone = phone
@@ -24,6 +26,7 @@ const builderSlice = createSlice({
 		addExperienceContent: (state, action) => {
 			const experienceContent = action.payload
 			state.content.experience.push(experienceContent)
+			
 		},
 		addEducationContent: (state, action) => {
 			const educationContent = action.payload

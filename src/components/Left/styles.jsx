@@ -23,6 +23,7 @@ export const StyledAddButton = styled.button`
 	background-color: #58add4;
 	border: none;
 	color: #5c5c85;
+	margin-bottom: 1rem;
 	font-weight: bold;
 	text-transform: uppercase;
 	box-shadow: 3px 3px 10px rgba(134, 132, 132, 0.5);
@@ -99,5 +100,15 @@ export const StyledSkills = styled.div`
 		.deleteIcon {
 			opacity: 0;
 		}
+	}
+`
+export const Div = styled.div`
+	width: 90%;
+	padding: 1rem;
+`
+export const DivItem = styled.div`
+	.editBtn{
+		padding: 0.5rem;
+		width: 250px;
 	}
 `
