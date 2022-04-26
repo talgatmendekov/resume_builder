@@ -26,11 +26,9 @@ body {
   width: 75vw;
   min-height: 100vh;
   font-family: "Lora", serif;
+  margin: 0 auto;
 }
 
-.right p {
-  margin: 0;
-}
 
 .right .page {
   background: white;
