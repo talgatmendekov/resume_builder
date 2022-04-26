@@ -32,7 +32,7 @@ const Right = () => {
 	}
 
 	const deleteContentHandlder = () => {
-		localStorage.clear()
+		localStorage.removeItem('@resumeDate')
 		dispatch(builderActions.deleteContent())
 	}
 

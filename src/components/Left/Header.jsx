@@ -142,6 +142,7 @@ const Header = () => {
 					<StyledTextArea
 						name='summary'
 						type='text'
+						maxLength={'400'}
 						onChange={headerContentInputs.onChange}
 						value={headerContentInputs.inputValue.name}
 						onBlur={headerContentInputs.onBlur}
