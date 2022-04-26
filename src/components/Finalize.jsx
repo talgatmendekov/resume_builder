@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../store/saveSlice'
 import EditResume from './editResume/EditResume'
 import { setToLocaleStorage } from '../utils/helpers/general'
-// import ChangeColor from './Edit/changeColor'
+import ChangeColor from './Edit/changeColor'
 
 const Finalize = () => {
 	const dispatch = useDispatch()
@@ -74,7 +74,7 @@ const Finalize = () => {
 						))}
 					</EditSection>
 				)}
-				{/* <ChangeColor/> */}
+				<ChangeColor/>
 			</StyledBasic>
 		</>
 	)

@@ -15,6 +15,7 @@ const builderSlice = createSlice({
 	initialState: initState,
 	reducers: {
 		changeFontColor:(state, action) => {
+			console.log(action.payload, "color");
 			state.color = action.payload
 		},
 		addHeaderContent:(state, action) => {
