@@ -14,6 +14,10 @@ const saveSlice = createSlice({
 			const resumeContent = action.payload
 			state.resumes.push(resumeContent)
 		},
+		deleteResume: (state, action) => {
+			const leftResume = state.resumes.filter(resume => resume.id !== action.payload);
+			state.resumes = leftResume
+		},
 		resumeId: (state, action) => {
 			state.resumeId =
 				action.payload 
