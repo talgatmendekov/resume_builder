@@ -68,6 +68,7 @@ const StyledHeaderPart = styled.div`
 	}
 	h1 {
 		text-transform: uppercase;
+	
 		
 	}
 	i {

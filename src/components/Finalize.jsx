@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../store/saveSlice'
 import EditResume from './editResume/EditResume'
 import { setToLocaleStorage } from '../utils/helpers/general'
-import ChangeColor from './Edit/changeColor'
+import ChangeColor from './Edit/ChangeColor'
+import ChangeFontStyle from './Edit/ChangeFontStyle'
 import { MdClose } from 'react-icons/md'
 
 const Finalize = () => {
@@ -81,6 +82,7 @@ const Finalize = () => {
 					</EditSection>
 				)}
 				<ChangeColor/>
+				<ChangeFontStyle/>
 			</StyledBasic>
 		</>
 	)
