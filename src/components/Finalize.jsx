@@ -9,6 +9,7 @@ import { saveActions } from '../store/saveSlice'
 import EditResume from './editResume/EditResume'
 import { setToLocaleStorage } from '../utils/helpers/general'
 import ChangeColor from './Edit/changeColor'
+import { MdClose } from 'react-icons/md'
 
 const Finalize = () => {
 	const dispatch = useDispatch()
@@ -30,6 +31,10 @@ const Finalize = () => {
 				id: Date.now().toString(),
 			}),
 		)
+	};
+
+	const deleteResumeHandler = (id) => {
+		dispatch(saveActions.deleteResume(id))
 	}
 	useEffect(() => {
 		setToLocaleStorage('allResumes', resumes)
@@ -70,6 +75,7 @@ const Finalize = () => {
 								key={resume.id}
 							>
 								{resume.content.header.fullName}
+								<MdClose className='delete' onClick={()=> deleteResumeHandler(resume.id)}/>
 							</ResumeStyled>
 						))}
 					</EditSection>
@@ -133,6 +139,13 @@ const ResumeStyled = styled.div`
 	:hover {
 		background-color: #940e0e;
 		color: white;
+	}
+	.delete{
+		opacity: 0;
+	}
+	:hover .delete{
+		opacity: 1;
+		font-size: 2rem;
 	}
 `
 const StyledBasic = styled.div`
