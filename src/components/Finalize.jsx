@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveActions } from '../store/saveSlice'
 import EditResume from './editResume/EditResume'
 import { setToLocaleStorage } from '../utils/helpers/general'
-// import ChangeColor from './Edit/changeColor'
+import ChangeColor from './Edit/changeColor'
+import { MdClose } from 'react-icons/md'
 
 const Finalize = () => {
 	const dispatch = useDispatch()
@@ -69,12 +70,16 @@ const Finalize = () => {
 								onClick={() => selectResumeHandler(resume.id)}
 								key={resume.id}
 							>
-								{resume.content.header.fullName}
+								<span>{resume.content.header.fullName} <MdClose 
+								cursor={'pointer'}
+								fontSize='20px'
+								className='deleteIcon'
+								/> </span>
 							</ResumeStyled>
-						))}
+						))} 
 					</EditSection>
 				)}
-				{/* <ChangeColor/> */}
+				<ChangeColor/>
 			</StyledBasic>
 		</>
 	)
@@ -92,6 +97,15 @@ const EditSection = styled.div`
 	flex-direction: column;
 	-webkit-box-align: center;
 	align-items: center;
+	.deleteIcon{
+		opacity: 0;
+		
+		
+	}
+	:hover .deleteIcon{
+			opacity: 1;
+			color: black;
+		}
 	.editBtn {
 		width: 100%;
 		margin-bottom: 1rem;

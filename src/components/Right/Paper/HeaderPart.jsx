@@ -67,6 +67,9 @@ const StyledHeaderPart = styled.div`
 	h1 {
 		text-transform: uppercase;
 	}
+	i{
+		word-wrap: break-word;
+	}
 `
 const GlobalStyle = createGlobalStyle`
 	h2, h1 {

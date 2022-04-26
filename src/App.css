@@ -1,8 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
+  
   background: #f2f3f4;
-  width: 98vw;
 }
 :root{
   --clr:#222327;
@@ -10,7 +8,7 @@ body {
 }
 
 .app {
-  width: 1400px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   min-height: 100vh;
