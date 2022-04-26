@@ -61,12 +61,14 @@ const StyledHeaderPart = styled.div`
 	flex-direction: column;
 	text-align: center;
 	width: 100%;
+	padding-top: 2rem;
 	align-items: center;
 	.contentHeader {
 		width: 80%;
 	}
 	h1 {
 		text-transform: uppercase;
+		
 	}
 	i {
 		word-wrap: break-word;
