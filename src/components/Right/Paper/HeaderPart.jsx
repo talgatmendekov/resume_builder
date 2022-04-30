@@ -24,7 +24,11 @@ const HeaderPart = () => {
       resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
     contentUse = currentItem.content;
   }
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 9f3ea2cc9984412f3c651bee1e62700ad9cd3cf0
   if (control && i18n.resolvedLanguage === "ru") {
     contentUse = templatedataRu;
   } else if (control && i18n.resolvedLanguage === "en") {
@@ -36,7 +40,6 @@ const HeaderPart = () => {
       resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
     contentUse = currentItem.content;
   }
-
   let divider;
   if (Object.keys(contentUse.header).length > 0) {
     divider = <hr />;

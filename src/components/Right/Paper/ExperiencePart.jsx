@@ -38,7 +38,6 @@ const ExperiencePart = () => {
       resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
     contentUse = currentItem.content;
   }
-
   let experienceContent = contentUse.experience.map((experience, index) => {
     return (
       <div key={index}>
