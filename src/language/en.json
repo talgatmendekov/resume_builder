@@ -73,7 +73,9 @@
         "editBtn": "Save Changes",
         "logoutBtn": "Logout",
         "savedResumes": "Saved Resumes",
-        "editResumes": "Resume edit section"
+        "editResumes": "Resume edit section",
+        "createResume": "Create New Resume"
+        
 
        
         

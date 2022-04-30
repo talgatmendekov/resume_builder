@@ -68,7 +68,8 @@
         "editBtn": "Сохранить изменения",
         "logoutBtn": "Выйти",
         "savedResumes": "Сохраненные Резюме",
-        "editResumes": "Раздел Редактирования"
+        "editResumes": "Раздел Редактирования",
+        "createResume": "Создать Новое Резюме"
     },
 
     "right": {
