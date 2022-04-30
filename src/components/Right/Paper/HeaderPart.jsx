@@ -12,7 +12,7 @@ const HeaderPart = () => {
   const { pathname } = useLocation();
 
   const { i18n } = useTranslation();
-  console.log(resumeId);
+
   let contentUse = content;
 
   if (control && i18n.resolvedLanguage === "ru") {
@@ -23,9 +23,12 @@ const HeaderPart = () => {
     const currentItem =
       resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
     contentUse = currentItem.content;
-    console.log(currentItem);
   }
+<<<<<<< HEAD
+
+=======
   
+>>>>>>> 9f3ea2cc9984412f3c651bee1e62700ad9cd3cf0
   if (control && i18n.resolvedLanguage === "ru") {
     contentUse = templatedataRu;
   } else if (control && i18n.resolvedLanguage === "en") {
