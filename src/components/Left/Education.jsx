@@ -40,7 +40,7 @@ const Education = () => {
 						type='text'
 						name='institution'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.institution}
+						value={educationContentInputs.inputValue.institution || ''}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -53,7 +53,7 @@ const Education = () => {
 					<StyledInput type='text'
 						name='address'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.address}
+						value={educationContentInputs.inputValue.address || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -65,7 +65,7 @@ const Education = () => {
 					<StyledInput type='text' 
 						name='major'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.major}
+						value={educationContentInputs.inputValue.major || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -78,7 +78,7 @@ const Education = () => {
 					<StyledInput type='text' 
 						name='graduationYear'
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.graduationYear}
+						value={educationContentInputs.inputValue.graduationYear || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>
@@ -90,7 +90,7 @@ const Education = () => {
 					<StyledInput type='text'
 						name='additionalInfo' 
 						onChange={educationContentInputs.onChange}
-						value={educationContentInputs.inputValue.additionalInfo}
+						value={educationContentInputs.inputValue.additionalInfo || ""}
 						onBlur={educationContentInputs.onBlur}
 					/>
 				</div>

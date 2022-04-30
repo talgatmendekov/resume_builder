@@ -3,7 +3,7 @@ import { FONT_STYLES } from '../../utils/helpers/constants'
 import styled from 'styled-components'
 
 import { builderActions } from '../../store/builderSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 const ChangeFontStyle = () => {
 	const dispatch = useDispatch()

@@ -103,7 +103,6 @@ export const COLORS = [
  export const FONT_STYLES = [
      'Arial',
      'Blinker',
-     'Bodoni MT',
      'Century Gothic',
      'Courier New',
      'Fira Sans',
