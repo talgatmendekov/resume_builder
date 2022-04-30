@@ -25,7 +25,11 @@ const SkillsPart = () => {
     contentUse = currentItem.content;
   }
   
-  if (pathname !== "/finalize" || resumes.length === 0) {
+  if (control && i18n.resolvedLanguage === "ru") {
+    contentUse = templatedataRu;
+  } else if (control && i18n.resolvedLanguage === "en") {
+    contentUse = templatedata;
+  } else if (pathname !== "/finalize" || resumes.length === 0) {
     contentUse = content;
   } else {
     const currentItem =

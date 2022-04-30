@@ -26,14 +26,17 @@ const HeaderPart = () => {
     console.log(currentItem);
   }
   
-  if (pathname !== "/finalize" || resumes.length === 0) {
+  if (control && i18n.resolvedLanguage === "ru") {
+    contentUse = templatedataRu;
+  } else if (control && i18n.resolvedLanguage === "en") {
+    contentUse = templatedata;
+  } else if (pathname !== "/finalize" || resumes.length === 0) {
     contentUse = content;
   } else {
     const currentItem =
       resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
     contentUse = currentItem.content;
   }
-
   let divider;
   if (Object.keys(contentUse.header).length > 0) {
     divider = <hr />;
