@@ -38,7 +38,7 @@ const Finalize = () => {
     window.location.reload();
     localStorage.removeItem("@resumeData");
   };
-  
+
   const localData = JSON.parse(localStorage.getItem("@resumeData"));
   useEffect(() => {
     if (!localData) {
@@ -57,7 +57,6 @@ const Finalize = () => {
     dispatch(saveActions.deleteResume(id));
   };
 
- 
   return (
     <>
       <StyledBasic className="left">
@@ -72,7 +71,9 @@ const Finalize = () => {
         <div>
           <div className="topLeft">
             <Button onClick={saveResumeHandler}>{t("left.saveResume")}</Button>
-            <Button onClick={createResumeHandler}>Create New Resuem</Button>
+            <Button onClick={createResumeHandler}>
+              {t("left.createResume")}
+            </Button>
           </div>
         </div>
         <hr />
@@ -98,13 +99,19 @@ const Finalize = () => {
             ))}
           </EditSection>
         )}
-        <ChangeColor />
-        <ChangeFontStyle />
+        <EditTools>
+          <ChangeColor />
+          <ChangeFontStyle />
+        </EditTools>
       </StyledBasic>
     </>
   );
 };
 
+const EditTools = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 const EditSection = styled.div`
   margin-top: 20px;
   width: 90%;
@@ -178,7 +185,18 @@ const StyledBasic = styled.div`
     div {
       margin-top: 1rem;
     }
-
+    button {
+      background: #704949;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 8px;
+	  font-size: 1rem;
+	  padding: 0.5rem;
+      :hover {
+        background: #0c0103;
+        color: wheat;
+      }
+    }
     div {
       flex-grow: 2;
       img {
@@ -204,6 +222,17 @@ const StyledBasic = styled.div`
     padding: 1rem;
     text-align: center;
     justify-content: space-evenly;
+    button {
+      background: #81bb7c;
+      margin-right: 0.5rem;
+      border: none;
+	  font-size: 1rem;
+      border-radius: 8px;
+      :hover {
+        background: #0c0103;
+        color: wheat;
+      }
+    }
 
     hr {
       width: 90%;
