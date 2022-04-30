@@ -12,7 +12,7 @@ const HeaderPart = () => {
   const { pathname } = useLocation();
 
   const { i18n } = useTranslation();
-  console.log(resumeId);
+  
   let contentUse = content;
 
   if (control && i18n.resolvedLanguage === "ru") {
@@ -23,7 +23,7 @@ const HeaderPart = () => {
     const currentItem =
       resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
     contentUse = currentItem.content;
-    console.log(currentItem);
+  
   }
   
   if (pathname !== "/finalize" || resumes.length === 0) {

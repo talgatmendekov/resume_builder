@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { StyledInput, StyledAddButton, StyledLabel, StyledForm, Div, DivItem } from '../Left/styles'
 import { saveActions } from '../../store/saveSlice'
-import Button from '../UI/Button'
+
 
 
 const EditEducation = () => {
