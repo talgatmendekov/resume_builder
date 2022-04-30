@@ -1,11 +1,10 @@
 import React from 'react'
 import { COLORS } from '../../utils/helpers/constants'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { builderActions } from '../../store/builderSlice'
 
 const ChangeColor = () => {
-	const fontColor = useSelector((state) => state.builder.color)
 	const dispatch = useDispatch()
 
 	const changeFontColorHandler = (color) => {
@@ -17,7 +16,6 @@ const ChangeColor = () => {
 			{COLORS.map((color) => (
 				<ColorPick
 					onClick={() => changeFontColorHandler(color)}
-					isColor={color === fontColor}
 					key={color}
 					color={color}
 				/>

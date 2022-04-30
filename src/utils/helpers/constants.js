@@ -99,5 +99,16 @@ export const COLORS = [
     '#d39c00',
     '#781EFF'
  ]
+
+ export const FONT_STYLES = [
+     'Arial',
+     'Blinker',
+     'Century Gothic',
+     'Courier New',
+     'Fira Sans',
+     'Georgia',
+     'Saira',
+     'Verdana'
+ ]
  
  

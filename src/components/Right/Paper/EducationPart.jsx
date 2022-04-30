@@ -1,71 +1,81 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import styled from 'styled-components'
-import { templatedata, templatedataRu } from '../../../utils/fake_data'
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import styled from "styled-components";
+import { templatedata, templatedataRu } from "../../../utils/fake_data";
 
 const EducationPart = () => {
-	const { content, control } = useSelector((state) => state.builder)
-	const { resumes, resumeId } = useSelector((state) => state.save)
+  const { content, control } = useSelector((state) => state.builder);
+  const { resumes, resumeId } = useSelector((state) => state.save);
+  const { pathname } = useLocation();
 
-	const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
-	let contentUse = content
+  let contentUse = content;
 
-	if (control && i18n.resolvedLanguage === 'ru') {
-		contentUse = templatedataRu
-	} else if (control && i18n.resolvedLanguage === 'en') {
-		contentUse = templatedata
-	} else if (resumes.length > 0) {
-		const currentItem =
-			resumes[resumes.length - 1] ||
-			resumes.find((el) => el.id === resumeId)
-		contentUse = currentItem.content
-	}
+  if (control && i18n.resolvedLanguage === "ru") {
+    contentUse = templatedataRu;
+  } else if (control && i18n.resolvedLanguage === "en") {
+    contentUse = templatedata;
+  } else if (resumes.length > 0) {
+    const currentItem =
+      resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
+    contentUse = currentItem.content;
+  }
+  
+  if (pathname !== "/finalize" || resumes.length === 0) {
+    contentUse = content;
+  } else {
+    const currentItem =
+      resumes.find((el) => el.id === resumeId) || resumes[resumes.length - 1];
+    contentUse = currentItem.content;
+  }
 
-	let educationContent = contentUse.education.map((education, index) => {
-		return (
-			<div key={index}>
-				<p>
-					<strong>{education.institution}</strong> {education.address}
-				</p>
-				<p>
-					{education.major} {education.graduationYear}
-				</p>
-				<ul>
-					<li>{education.additionalInfo}</li>
-				</ul>
-			</div>
-		)
-	})
+  let educationContent = contentUse.education.map((education, index) => {
+    return (
+      <div key={index}>
+        <p>
+          <strong>{education.institution}</strong> {education.address}
+        </p>
+        <p>
+          {education.major} {education.graduationYear}
+        </p>
+        <ul>
+          <li>{education.additionalInfo}</li>
+        </ul>
+      </div>
+    );
+  });
 
-	let title
-	if (contentUse.education.length === 0) {
-		title = ''
-	} else {
-		title = (
-			<h3>
-				<strong>{t('left.education.title')}</strong>
-			</h3>
-		)
-	}
-	return (
-		<StyledEducationPart>
-			{title}
-			{educationContent}
-		</StyledEducationPart>
-	)
-}
+  let title;
+  if (contentUse.education.length === 0) {
+    title = "";
+  } else {
+    title = (
+      <h3>
+        <strong>{t("left.education.title")}</strong>
+      </h3>
+    );
+  }
+
+  return (
+    <StyledEducationPart>
+      {title}
+      {educationContent}
+    </StyledEducationPart>
+  );
+};
 
 const StyledEducationPart = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-left: 94px;
-	h3 {
-		strong {
-			text-transform: uppercase;
-		}
-	}
-`
-export default EducationPart
+  display: flex;
+  flex-direction: column;
+  margin-left: 94px;
+  h3 {
+    strong {
+      text-transform: uppercase;
+    }
+  }
+`;
+export default EducationPart;

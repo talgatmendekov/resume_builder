@@ -9,14 +9,18 @@ const initState = {
 	},
 	color: '#464746',
 	control: false,
+	fontStyle: 'Arial',
 }
 const builderSlice = createSlice({
 	name: 'builder',
 	initialState: initState,
 	reducers: {
 		changeFontColor:(state, action) => {
-			console.log(action.payload, "color");
 			state.color = action.payload
+		},
+		changeFontStyle: (state, action) => {
+			console.log(action.payload, 'font')
+			state.fontStyle = action.payload
 		},
 		addHeaderContent:(state, action) => {
 			const headerContent = action.payload

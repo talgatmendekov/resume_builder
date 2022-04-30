@@ -91,7 +91,7 @@ const Skills = () => {
 						name='skill'
 						type='text'
 						onChange={skillsInputChangeHandler}
-						value={skillValue}
+						value={skillValue || ""}
 						autoComplete='off'
 					/>
 					<SkillsContainer
